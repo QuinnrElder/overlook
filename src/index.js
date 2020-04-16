@@ -31,8 +31,7 @@ $('#log-in-btn').on('click', function () {
 })
 
 function windowHandler(data) {
-  let currentUser = userLogIn(data)
-  domUpdates.displayLogin(currentUser)
+  userLogIn(data)
 }
 
 function userLogIn(usersData) {
@@ -42,7 +41,6 @@ function userLogIn(usersData) {
   if (username === "manager" && password === "overlook2020") {
     let newManager = 'manager';
     getNeededData(newManager)
-
   } else {
     let ourUser = checkPassword(usersData)
     getNeededData(ourUser)
@@ -101,11 +99,7 @@ function reassignData(apiRooms, apiBookings, newPerson) {
   reAssignRooms(apiRooms);
   reAssignBookings(apiBookings)
   reAssignUser(newPerson)
-
-  console.log('M', manager)
-  console.log('U', user)
-  console.log('B', bookings)
-  console.log('H', hotel)
+  domUpdates.displayLogin(manager)
 }
 
 function reAssignRooms(apiRooms) {
@@ -125,6 +119,7 @@ function reAssignBookings(apiBookings) {
 function reAssignUser(newPerson) {
   if (newPerson === 'manager') {
     manager = new Manager(newPerson)
+  } else {
+    user = new User(newPerson, bookings)
   }
-  user = new User(newPerson)
 }
