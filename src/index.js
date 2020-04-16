@@ -17,15 +17,13 @@ import Manager from './Manager';
 
 let booking;
 let manager
-let bookings = []
-let hotel = [];
+let bookings = new Bookings()
+let hotel = new Hotel()
 let room;
-let date; 
+let date;
 let user;
 
-
-
-$('#log-in-btn').on('click', function() {
+$('#log-in-btn').on('click', function () {
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
     .then(promise => promise.json())
     .then(data => windowHandler(data.users))
@@ -34,31 +32,27 @@ $('#log-in-btn').on('click', function() {
 
 function windowHandler(data) {
   let currentUser = userLogIn(data)
-  console.log(currentUser)
+  domUpdates.displayLogin(currentUser)
 }
 
 function userLogIn(usersData) {
   let username = $('#login-username-input').val();
   let password = $('#password-login-input').val();
-  let manager = 'manager';
 
   if (username === "manager" && password === "overlook2020") {
-    manager = new Manager("manager")
-    return manager;
+    let newManager = 'manager';
+    getNeededData(newManager)
 
   } else {
     let ourUser = checkPassword(usersData)
-    user = new User(ourUser)
-    return user
+    getNeededData(ourUser)
   }
 }
 
 function checkPassword(usersData) {
   let username = $('#login-username-input').val();
   let password = $('#password-login-input').val();
-  if (username === "manager" && password === "overlook2020") {
 
-  }
   if (username !== "" && password !== "") {
     let passwordId = checkPasswordLetters(username, password)
     let correctUser = usersData.find(user => user.id === passwordId)
@@ -93,4 +87,41 @@ function checkPasswordNumbers(username) {
   } else {
     alert('Please use the correct PASSWORD')
   }
+}
+
+// AFTER LOG IN FETCHES FOR DATA //
+function getNeededData(newPerson) {
+  Promise.all([
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()),
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()),
+  ]).then(data => reassignData(data[0].rooms, data[1].bookings, newPerson))
+}
+
+function reassignData(apiRooms, apiBookings, newPerson) {
+  reAssignRooms(apiRooms);
+  reAssignBookings(apiBookings)
+  reAssignUser(newPerson)
+  console.log('U', user)
+  console.log('M', manager)
+}
+
+function reAssignRooms(apiRooms) {
+  apiRooms.forEach(apiRoom => {
+    room = new Room(apiRoom)
+    hotel.allRooms.push(room)
+  })
+}
+
+function reAssignBookings(apiBookings) {
+  apiBookings.forEach(apiBooking => {
+    booking = new Booking(apiBooking)
+    bookings.allBookings.push(booking)
+  })
+}
+
+function reAssignUser(newPerson) {
+  if (newPerson === 'manager') {
+    manager = new Manager(newPerson)
+  }
+  user = new User(newPerson)
 }
