@@ -101,8 +101,11 @@ function reassignData(apiRooms, apiBookings, newPerson) {
   reAssignRooms(apiRooms);
   reAssignBookings(apiBookings)
   reAssignUser(newPerson)
-  console.log('U', user)
+
   console.log('M', manager)
+  console.log('U', user)
+  console.log('B', bookings)
+  console.log('H', hotel)
 }
 
 function reAssignRooms(apiRooms) {
