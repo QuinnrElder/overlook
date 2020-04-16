@@ -13,26 +13,84 @@ import Hotel from './Hotel';
 import Booking from './Booking';
 import Bookings from './Bookings'
 import domUpdates from './domUpdates';
-import Manager from './Manager'
+import Manager from './Manager';
 
 let booking;
 let manager
 let bookings = []
 let hotel = [];
 let room;
-let todayDate = "2019/09/22";
+let date; 
 let user;
-let users = [];
 
-window.onload = () => {
+
+
+$('#log-in-btn').on('click', function() {
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
     .then(promise => promise.json())
-    .then(data => getUsersData(data))
+    .then(data => windowHandler(data.users))
     .catch(err => console.error(err))
-};
+})
 
-function getUsersData(usersData) {
-  users = usersData
-  return users
+function windowHandler(data) {
+  let currentUser = userLogIn(data)
+  console.log(currentUser)
 }
 
+function userLogIn(usersData) {
+  let username = $('#login-username-input').val();
+  let password = $('#password-login-input').val();
+  let manager = 'manager';
+
+  if (username === "manager" && password === "overlook2020") {
+    manager = new Manager("manager")
+    return manager;
+
+  } else {
+    let ourUser = checkPassword(usersData)
+    user = new User(ourUser)
+    return user
+  }
+}
+
+function checkPassword(usersData) {
+  let username = $('#login-username-input').val();
+  let password = $('#password-login-input').val();
+  if (username === "manager" && password === "overlook2020") {
+
+  }
+  if (username !== "" && password !== "") {
+    let passwordId = checkPasswordLetters(username, password)
+    let correctUser = usersData.find(user => user.id === passwordId)
+    return correctUser
+  } else {
+    alert('Please fill out Username & Password correctly')
+  }
+}
+
+function checkPasswordLetters(username, password) {
+  let passwordId;
+  if (username.includes('customer') && password.includes('overlook2020')) {
+    passwordId = checkPasswordNumbers(username)
+    return passwordId
+  } else {
+    alert('Please use the correct PASSWORD')
+  }
+  return passwordId
+}
+
+function checkPasswordNumbers(username) {
+  let id1;
+  username = username.split('');
+  if (username.length === 9) {
+    id1 = (username[username.length - 1])
+    id1 = parseInt(id1)
+    return id1
+  } else if (username.length === 10) {
+    id1 = username[username.length - 2] + username[username.length - 1]
+    id1 = parseInt(id1)
+    return id1
+  } else {
+    alert('Please use the correct PASSWORD')
+  }
+}

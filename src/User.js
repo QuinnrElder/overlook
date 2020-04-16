@@ -1,10 +1,10 @@
 class User {
-  constructor(data) {
+  constructor(data, bookingsData) {
     this.id = data.id;
     this.name = data.name;
-    this.myBookings = this.findMyBookings(data)
+    this.myBookings = this.findMyBookings(data, bookingsData)
   }
-  findMyBookings(data) {
+  findMyBookings(data, bookingsData) {
     // this will give this.myBookings
     // an array of that users bookings.
   }

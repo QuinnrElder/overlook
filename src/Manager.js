@@ -1,5 +1,6 @@
 class Manager {
-  constructor() {
+  constructor(manager) {
+    this.id = manager
   }
 }
 export default Manager;
