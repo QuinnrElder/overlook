@@ -2,7 +2,7 @@
 import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/login-background.jpg'
 
 import './css/base.scss';
 // import './css/styles.scss';
@@ -99,13 +99,11 @@ function reassignData(apiRooms, apiBookings, newPerson) {
   reAssignRooms(apiRooms);
   reAssignBookings(apiBookings)
   reAssignUser(newPerson)
-  domUpdates.displayLogin(manager)
-  console.log()
   if (manager) {
-    console.log('manager')
+    domUpdates.flipCard($('.manager-page'), $('.login'))
     domUpdates.displayManagerPage(manager)
   } 
-  console.log(user)
+  domUpdates.flipCard($('.user-page'), $('.login'))
   domUpdates.displayUserPage(user)
 }
 
