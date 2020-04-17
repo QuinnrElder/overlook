@@ -177,6 +177,82 @@ main {
 
 }
 
+// THIS IS GOR THE USER PAGE //
+.user-page {
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  width: 90%;
+  border: 5px solid rgb(57, 92, 99);
+  border-radius: 10px;
+  background-color: rgba(240, 248, 255, .8);
+  flex-direction: column;
+  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.5);
+}
+
+.user-navs {
+  border-right: 5px solid rgb(57, 92, 99);
+  float: left;
+  height: 100%;
+  display: flex;
+  width: 15%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-bookings-text {
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.my-bookings {
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.money-spent-text{
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.money-spent {
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.main-user-info {
+  margin-left: 17%;
+}
+
+.welcome-user {
+  margin: 1% 0 3% 0;
+  text-align: center;
+  font-size: 10em;
+  width: 98%;
+}
+
+.user-search-nav {
+  border: 3px solid rgb(57, 92, 99);
+  margin-top: 1%;
+  text-align: center;
+  font-size: 5em;
+  width: 98%;
+  height: 25vh;
+  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+}
+
+.filter-input {
+  border: 2px solid rgb(57, 92, 99);
+  width: 10%;
+  height: 5vh;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+}
+
 @media screen and (max-width: 850px) {
 
   // THIS IS FOR THE LOG IN PAGE //
@@ -250,7 +326,6 @@ main {
     width: 90%;
     height: 40vh;
     margin-left: 5%;
-
     box-shadow: 1.5px 1px 1px 1px rgba(75, 77, 78, 0.5);
     display: flex;
     flex-direction: column;
@@ -263,7 +338,6 @@ main {
     height: 5vh;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin: 10% 30%;
-
   }
   
   #search-btn {
@@ -273,5 +347,65 @@ main {
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin-left: 30%;
 
+  }
+
+  //  THIS IS FOR THE USER PAGE //
+
+  .user-navs {
+    float: left;
+    height: 100%;
+    display: flex;
+    width: 33%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .my-bookings-text {
+    font-size: 1em;
+  }
+  
+  .my-bookings {
+    font-size: 1em;
+  }
+
+  .money-spent-text {
+    font-size: 1em; 
+  }
+
+  .money-spent {
+    font-size: 1em;
+  }
+
+  .main-user-info {
+    margin-left: 34%;
+  }
+
+  .welcome-user {
+    margin: 10% 0 13% 0;
+    text-align: center;
+    font-size: 3em;
+    width: 98%;
+  }
+
+  .user-search-nav {
+    border: 2px solid rgb(57, 92, 99);
+    text-align: center;
+    font-size: 2em;
+    width: 90%;
+    height: 30vh;
+    margin: 2% 0 4% 5%;
+    box-shadow: 1.5px 1px 1px 1px rgba(75, 77, 78, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .filter-input {
+    border: 2px solid rgb(57, 92, 99);
+    width: 40%;
+    height: 5vh;
+    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+    margin: 10% 30%;
   }
 }
