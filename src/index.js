@@ -23,7 +23,7 @@ let room;
 let date;
 let user;
 
-$('#log-in-btn').on('click', function () {
+$('#login-btn').on('click', function () {
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
     .then(promise => promise.json())
     .then(data => windowHandler(data.users))
@@ -100,11 +100,12 @@ function reassignData(apiRooms, apiBookings, newPerson) {
   reAssignBookings(apiBookings)
   reAssignUser(newPerson)
   if (manager) {
-    domUpdates.flipCard($('.manager-page'), $('.login'))
+    domUpdates.flipCard($('.manager-page'), $('.login-container'))
     domUpdates.displayManagerPage(manager)
-  } 
-  domUpdates.flipCard($('.user-page'), $('.login'))
-  domUpdates.displayUserPage(user)
+  } else {
+    domUpdates.flipCard($('.user-page'), $('.login-container'))
+    domUpdates.displayUserPage(user)
+  }
 }
 
 function reAssignRooms(apiRooms) {

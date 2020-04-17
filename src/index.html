@@ -6,25 +6,63 @@
 </head>
 
 <body>
-  <header class="login">
-    <section class="login-container">
+  <main class="main">
+
+    <section class="login-container hide">
       <h1 class="header-title">Welcome to OVERLOOK'</h1>
       <section class="login-form">
         <legend class="login-legend">*Please log in before choosing a destination</legend>
         <section class="inputs-login">
-          <label for="login-username">Username:</label>
-          <input id="login-username-input" name="login-username" type="text"></input>
-          <label for="login-password">Password:</label>
-          <input id="password-login-input" name="login-password" type="text"></input>
-          <input id="log-in-btn" type="submit">
+          <div>
+            <label for="login-username">Username:</label>
+            <input id="login-username-input" name="login-username" type="text"></input>
+          </div>
+          <div>
+            <label for="login-password">Password:</label>
+            <input id="password-login-input" name="login-password" type="text"></input>
+          </div>
+
+          <input id="login-btn" type="submit">
+
         </section>
       </section>
     </section>
-  </header>
-  <main>
-    <section class="manager-page hide">
-      <p>FUCK THE MANAGER</p>
+
+    <section class="manager-page">
+      <section class="manager-navs">
+        <p class="nav-title">As of Now...</p>
+        <section class="nav-box">
+          <p class="all-available-rooms-txt">Available Rooms</p>
+          <p class="all-available-rooms">//</p>
+        </section>
+        <section class="nav-box">
+          <p class="total-revenue-text">Total Revenue</p>
+          <p class="total-revenue">//</p>
+        </section>
+        <section class="nav-box">
+          <p class="available-percent-text">Available %</p>
+          <p class="available-percent">//</p>
+        </section>
+      </section>
+      <section class="main-manager-info">
+        <p class="todays-date">//</p>
+        <section class="manager-search-nav">
+          <label class="search-nav-title">Customers Name?</label>
+          <input class="input-name" type="text"></input>
+          <input id="search-btn" type="submit">
+        </section>
+      </section>
     </section>
+<!-- // POP UP WINDO FOR MANAGER // -->
+<!-- <section class="search-window hide">//</section> -->
+
+
+
+
+
+
+
+
     <section class="user-page hide">
       <p>FUCK THE USER</p>
     </section>
