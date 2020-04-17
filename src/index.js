@@ -31,18 +31,16 @@ $('#log-in-btn').on('click', function () {
 })
 
 function windowHandler(data) {
-  let currentUser = userLogIn(data)
-  domUpdates.displayLogin(currentUser)
+  userLogIn(data)
 }
 
 function userLogIn(usersData) {
-  let username = $('#login-username-input').val();
-  let password = $('#password-login-input').val();
+  const username = $('#login-username-input').val();
+  const password = $('#password-login-input').val();
 
   if (username === "manager" && password === "overlook2020") {
-    let newManager = 'manager';
+    const newManager = 'manager';
     getNeededData(newManager)
-
   } else {
     let ourUser = checkPassword(usersData)
     getNeededData(ourUser)
@@ -75,7 +73,7 @@ function checkPasswordLetters(username, password) {
 
 function checkPasswordNumbers(username) {
   let id1;
-  username = username.split('');
+  username = username.split('')
   if (username.length === 9) {
     id1 = (username[username.length - 1])
     id1 = parseInt(id1)
@@ -101,11 +99,14 @@ function reassignData(apiRooms, apiBookings, newPerson) {
   reAssignRooms(apiRooms);
   reAssignBookings(apiBookings)
   reAssignUser(newPerson)
-
-  console.log('M', manager)
-  console.log('U', user)
-  console.log('B', bookings)
-  console.log('H', hotel)
+  domUpdates.displayLogin(manager)
+  console.log()
+  if (manager) {
+    console.log('manager')
+    domUpdates.displayManagerPage(manager)
+  } 
+  console.log(user)
+  domUpdates.displayUserPage(user)
 }
 
 function reAssignRooms(apiRooms) {
@@ -125,6 +126,7 @@ function reAssignBookings(apiBookings) {
 function reAssignUser(newPerson) {
   if (newPerson === 'manager') {
     manager = new Manager(newPerson)
+  } else {
+    user = new User(newPerson, bookings)
   }
-  user = new User(newPerson)
 }
