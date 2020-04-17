@@ -35,11 +35,11 @@ function windowHandler(data) {
 }
 
 function userLogIn(usersData) {
-  let username = $('#login-username-input').val();
-  let password = $('#password-login-input').val();
+  const username = $('#login-username-input').val();
+  const password = $('#password-login-input').val();
 
   if (username === "manager" && password === "overlook2020") {
-    let newManager = 'manager';
+    const newManager = 'manager';
     getNeededData(newManager)
   } else {
     let ourUser = checkPassword(usersData)
@@ -73,7 +73,7 @@ function checkPasswordLetters(username, password) {
 
 function checkPasswordNumbers(username) {
   let id1;
-  username = username.split('');
+  username = username.split('')
   if (username.length === 9) {
     id1 = (username[username.length - 1])
     id1 = parseInt(id1)
@@ -100,6 +100,13 @@ function reassignData(apiRooms, apiBookings, newPerson) {
   reAssignBookings(apiBookings)
   reAssignUser(newPerson)
   domUpdates.displayLogin(manager)
+  console.log()
+  if (manager) {
+    console.log('manager')
+    domUpdates.displayManagerPage(manager)
+  } 
+  console.log(user)
+  domUpdates.displayUserPage(user)
 }
 
 function reAssignRooms(apiRooms) {

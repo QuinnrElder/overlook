@@ -12,5 +12,15 @@ const domUpdates = {
     }
   },
 
+  displayManagerPage(manager) {
+
+  },
+ 
+  displayUserPage(user) {
+
+  },
+
+
+
 }
 export default domUpdates;

@@ -7,7 +7,7 @@
 :crystal_ball: JS modifications/updates.
 :lipstick: hotfix any code.
 :bar_chart: new tests
-:camera_flash: adding screenshots
+:camera_with_flash: adding screenshots
 :bento: Adding new assets or images
 :beetle: If it is a bug or issue fix, describe the issue that was fixed.
 
