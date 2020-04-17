@@ -1,10 +1,61 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
-
 body {
-  background-color: $primary-background;
+  background-image: url('../images/login-background.jpg');
+  background-position: center;
+  margin: 0;
+  height: 100vh; 
 }
 
 .hide {
   display: none;
+}
+
+.login {
+  height: 100vh;
+  width: 100vw;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  margin: 23%;
+  height: 30vh;
+  width: 70%;
+  border: 5px solid darkgrey;
+  border-radius: 10px;
+  background-color: rgba(95,158,160, 0.7);
+  flex-direction: column;
+  box-shadow: 2px 2px 2px 2px rgb(112,128,144);
+}
+
+.login-legend {
+text-align: center;
+}
+
+.header-title {
+  height: 10vh;
+  font-size: 2.3em;
+  margin: 5vh 0 0 0;
+  font-family: fantasy;
+}
+
+.login-form {
+  height: 10vh;
+  margin: 0 0 5vh 0;
+  font-size: x-large;
+  font-weight: 600;
+  font-family: fantasy;
+}
+
+.inputs-login {
+  display: block;
+}
+
+#log-in-btn {
+  display: block;
+}
+@media screen and (max-width: 900px) {
+
+
 }
