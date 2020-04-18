@@ -1,43 +1,63 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
 body {
+  margin: 0;
+  color: white;
+}
+main {
   background-image: url('../images/login-background.jpg');
   background-position: center;
   margin: 0;
-  height: 100vh; 
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .hide {
   display: none;
 }
 
-.login {
-  height: 100vh;
-  width: 100vw;
+// THIS IS FOR THE LOGIN PAGE //
+
+.label {
+margin: 0 .5%;
+}
+
+.input {
+  margin: 0 .5%;
+  border: 3px solid rgb(161, 226, 226);
+  border-radius: 10px;
+  box-shadow: 1px .5px .5px .5px rgb(112, 128, 144);
+}
+
+.login-div {
+width: 17%;
 }
 
 .login-container {
-  display: flex;
   align-items: center;
-  margin: 23%;
+  justify-content: center;
   height: 30vh;
   width: 70%;
-  border: 5px solid darkgrey;
+  border: 5px solid rgb(161, 226, 226);
   border-radius: 10px;
-  background-color: rgba(95,158,160, 0.7);
+  box-shadow: 2px 1px 1px 1px rgb(68, 78, 82);
+  background-color: rgba(44, 107, 107, 0.8);
   flex-direction: column;
-  box-shadow: 2px 2px 2px 2px rgb(112,128,144);
 }
 
 .login-legend {
-text-align: center;
+  text-align: center;
+  margin-top: 1%;
 }
 
 .header-title {
-  height: 10vh;
-  font-size: 2.3em;
+  font-size: 3em;
   margin: 5vh 0 0 0;
   font-family: fantasy;
+  text-align: center;
 }
 
 .login-form {
@@ -49,13 +69,367 @@ text-align: center;
 }
 
 .inputs-login {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#login-btn {
+  display: inline-block;
+  height: 3em;
+  width: 7%;
+  border: 3px solid rgb(161, 226, 226);
+  border-radius: 10px;
+  box-shadow: 1px .5px .5px .5px rgb(112, 128, 144);
+}
+
+// THIS IS FOR THE MANAGER PAGE //
+
+.main-manager-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.manager-page {
+  height: 85vh;
+  width: 90%;
+  border: 5px solid rgb(161, 226, 226);
+  border-radius: 10px;
+  background-color: rgba(44, 107, 107, 0.8);
+  flex-direction: column;
+  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
+}
+
+.manager-navs {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-box {
+  border: 3px solid rgb(161, 226, 226);
+  width: 80%;
+  margin: 2% 5% 5% 5%;
+  height: 20%;
+  border-radius: 10px;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.3);
+  border-radius: 10px;
+}
+
+.all-available-rooms-txt {
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.all-available-rooms {
+  font-family: fantasy;
+  text-align: center;
+  font-size: 2em;
+}
+
+.total-revenue-text {
+  text-align: center;
+  font-size: 2em;
+  font-family: fantasy;
+}
+
+.total-revenue {
+  font-family: fantasy;
+  text-align: center;
+  font-size: 2em;
+}
+
+.available-percent-text {
+  font-family: fantasy;
+  text-align: center;
+  font-size: 2em;
+}
+
+.available-percent {
+  font-family: fantasy;
+  text-align: center;
+  font-size: 2em;
+}
+
+.todays-date {
+  margin: 0;
+  text-align: center;
+  font-size: 10em;
+  width: 98%;
+}
+
+.manager-search-nav {
+  border: 3px solid rgb(161, 226, 226);
+  margin: 1% 5% 0 5%;
+  text-align: center;
+  font-size: 5em;
+  width: 98%;
+  height: 25vh;
+  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+}
+
+.search-nav-title {
   display: block;
 }
 
-#log-in-btn {
-  display: block;
+.input-name {
+  border: 3px solid rgb(161, 226, 226);
+  width: 10%;
+  height: 5vh;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
 }
-@media screen and (max-width: 900px) {
+
+#search-btn {
+  border: 3px solid rgb(161, 226, 226);
+  width: 10%;
+  height: 5vh;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+}
+
+// THIS IS FOR THE USER PAGE //
+.user-page {
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  width: 90%;
+  border: 5px solid rgb(161, 226, 226);
+  border-radius: 10px;
+  background-color: rgba(44, 107, 107, 0.8);
+  flex-direction: column;
+  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
+}
+
+.bookings-container {
+  border-right: 5px solid rgb(161, 226, 226);
+  float: left;
+  height: 100%;
+  display: flex;
+  width: 25%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookings-box {
+  border: 3px solid rgb(161, 226, 226);
+  width: 80%;
+  margin: 5%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.3);
+  border-radius: 10px;
+}
+
+.my-bookings-text {
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.my-bookings {
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.money-spent-text{
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+  margin-bottom: 1%;
+}
+
+.money-spent {
+  font-size: 2em;
+  text-align: center;
+  font-family: fantasy;
+  padding-bottom: 2%;
+}
+
+.main-user-info {
+  margin-left: 26%;
+}
+
+.welcome-user {
+  margin: 1% 0 3% 0;
+  text-align: center;
+  font-size: 7em;
+  width: 98%;
+}
+
+.user-search-nav {
+  border: 3px solid rgb(161, 226, 226);
+  margin-top: 1%;
+  text-align: center;
+  font-size: 5em;
+  width: 98%;
+  height: 25vh;
+  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+}
+
+.filter-input {
+  border: 3px solid rgb(161, 226, 226);
+  width: 10%;
+  height: 5vh;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 850px) {
+
+  // THIS IS FOR THE LOG IN PAGE //
+  .login-container {
+    height: 60vh;
+  }
+
+  .login-div {
+    width:100%;
+    margin: 5% 0 5% 15%;
+  }
+
+  #login-btn {
+    margin-left: 20%;
+    width: 50%;
+  }
 
 
+  // THIS IS FOR THE MANAGER PAGE //
+  .manager-navs {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-box {
+    margin: 1% 5%;
+  }
+  
+  .all-available-rooms-txt {
+    font-size: 1em;
+  }
+
+  .total-revenue-text {
+    font-size: 1em;
+  }
+
+  .available-percent-text {
+    font-size: 1em;
+  }
+
+  .all-available-rooms {
+    font-size: 1em;
+  }
+
+  .total-revenue {
+    font-size: 1em;
+  }
+
+  .available-percent {
+    font-size: 1em;
+  }
+
+  .todays-date {
+    display: none
+  }
+  
+  .manager-search-nav {
+    border: 2px solid rgb(161, 226, 226);
+    text-align: center;
+    font-size: 3em;
+    width: 90%;
+    height: 40vh;
+    margin:2% 5%;
+    box-shadow: 1.5px 1px 1px 1px rgba(75, 77, 78, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .input-name {
+    border: 2px solid rgb(161, 226, 226);
+    width: 40%;
+    height: 5vh;
+    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+    margin: 10% 30%;
+  }
+  
+  #search-btn {
+    border: 2px solid rgb(161, 226, 226);
+    width: 43%;
+    height: 5vh;
+    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+    margin-left: 30%;
+
+  }
+
+  //  THIS IS FOR THE USER PAGE //
+  .bookings-container {
+    float: left;
+    height: 100%;
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .my-bookings-text {
+    font-size: 1em;
+  }
+  
+  .my-bookings {
+    font-size: 1em;
+  }
+
+  .money-spent-text {
+    font-size: 1em; 
+  }
+
+  .money-spent {
+    font-size: 1em;
+  }
+
+  .main-user-info {
+    margin-left: 41%;
+  }
+
+  .welcome-user {
+    margin: 10% 0 13% 0;
+    text-align: center;
+    font-size: 2em;
+    width: 98%;
+  }
+
+  .user-search-nav {
+    border: 2px solid rgb(161, 226, 226);
+    text-align: center;
+    font-size: 2em;
+    width: 90%;
+    height: 30vh;
+    margin: 2% 0 4% 5%;
+    box-shadow: 1.5px 1px 1px 1px rgba(75, 77, 78, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .filter-input {
+    border: 2px solid rgb(161, 226, 226);
+    width: 40%;
+    height: 5vh;
+    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+    margin: 10% 30%;
+  }
 }

@@ -6,28 +6,28 @@
 </head>
 
 <body>
-  <header class="login">
+  <main class="main">
     <section class="login-container">
       <h1 class="header-title">Welcome to OVERLOOK'</h1>
       <section class="login-form">
         <legend class="login-legend">*Please log in before choosing a destination</legend>
         <section class="inputs-login">
-          <label for="login-username">Username:</label>
-          <input id="login-username-input" name="login-username" type="text"></input>
-          <label for="login-password">Password:</label>
-          <input id="password-login-input" name="login-password" type="text"></input>
-          <input id="log-in-btn" type="submit">
+          <div class="login-div">
+            <label class="label" for="login-username">Username:</label>
+            <input class="input" id="login-username-input" name="login-username" type="text"></input>
+          </div>
+          <div class="login-div">
+            <label class="label" for="login-password">Password:</label>
+            <input class="input" id="password-login-input" name="login-password" type="text"></input>
+          </div>
+          <input id="login-btn" type="submit">
         </section>
       </section>
     </section>
-  </header>
-  <main>
-    <section class="manager-page hide">
-      <p>FUCK THE MANAGER</p>
-    </section>
-    <section class="user-page hide">
-      <p>FUCK THE USER</p>
-    </section>
+
+    <section class="manager-page hide"></section>
+
+    <section class="user-page hide"></section>
   </main>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
 </body>

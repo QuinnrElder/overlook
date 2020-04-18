@@ -6,8 +6,9 @@ import './images/login-background.jpg'
 
 import './css/base.scss';
 // import './css/styles.scss';
-import $ from 'jQuery'
+import $ from 'jQuery';
 import User from './User';
+import UsersRepo from './UsersRepo';
 import Room from './Room';
 import Hotel from './Hotel';
 import Booking from './Booking';
@@ -20,10 +21,11 @@ let manager
 let bookings = new Bookings()
 let hotel = new Hotel()
 let room;
-let date;
+let date = new Date().toLocaleDateString();
 let user;
+let usersRepo = new UsersRepo();
 
-$('#log-in-btn').on('click', function () {
+$('#login-btn').on('click', function () {
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
     .then(promise => promise.json())
     .then(data => windowHandler(data.users))
@@ -40,10 +42,10 @@ function userLogIn(usersData) {
 
   if (username === "manager" && password === "overlook2020") {
     const newManager = 'manager';
-    getNeededData(newManager)
+    getNeededData(newManager, usersData)
   } else {
     let ourUser = checkPassword(usersData)
-    getNeededData(ourUser)
+    getNeededData(ourUser, usersData)
   }
 }
 
@@ -88,23 +90,27 @@ function checkPasswordNumbers(username) {
 }
 
 // AFTER LOG IN FETCHES FOR DATA //
-function getNeededData(newPerson) {
+function getNeededData(newPerson, usersData) {
   Promise.all([
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()),
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()),
-  ]).then(data => reassignData(data[0].rooms, data[1].bookings, newPerson))
+  ]).then(data => reassignData(data[0].rooms, data[1].bookings, newPerson, usersData))
 }
 
-function reassignData(apiRooms, apiBookings, newPerson) {
+function reassignData(apiRooms, apiBookings, newPerson, usersData) {
   reAssignRooms(apiRooms);
   reAssignBookings(apiBookings)
-  reAssignUser(newPerson)
+  reAssignUsers(usersData)
+  reAssignUser(newPerson, usersRepo.allUsers, bookings, hotel)
   if (manager) {
-    domUpdates.flipCard($('.manager-page'), $('.login'))
-    domUpdates.displayManagerPage(manager)
-  } 
-  domUpdates.flipCard($('.user-page'), $('.login'))
-  domUpdates.displayUserPage(user)
+    console.log(manager)
+    domUpdates.flipCard($('.manager-page'), $('.login-container'))
+    domUpdates.displayManagerPage(manager, usersRepo, bookings, hotel, date)
+  } else {
+    console.log(user)
+    domUpdates.flipCard($('.user-page'), $('.login-container'))
+    domUpdates.displayUserPage(user, usersRepo, bookings, hotel, date)
+  }
 }
 
 function reAssignRooms(apiRooms) {
@@ -121,9 +127,16 @@ function reAssignBookings(apiBookings) {
   })
 }
 
-function reAssignUser(newPerson) {
+function reAssignUsers(usersData) {
+  usersData.forEach(data => {
+    user = new User(data, bookings)
+    usersRepo.allUsers.push(user)
+  })
+}
+
+function reAssignUser(newPerson, usersRepo, bookings, hotel) {
   if (newPerson === 'manager') {
-    manager = new Manager(newPerson)
+    manager = new Manager(newPerson, usersRepo, bookings, hotel)
   } else {
     user = new User(newPerson, bookings)
   }
