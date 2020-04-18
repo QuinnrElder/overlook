@@ -14,21 +14,6 @@ const domUpdates = {
 
   injectManagerHTML() {
     $('.manager-page').html(`
-    <section class="manager-navs">
-        <p class="nav-title">The Hotel has:</p>
-        <section class="nav-box">
-          <p class="all-available-rooms-txt">Available Rooms</p>
-          <p class="all-available-rooms">//</p>
-        </section>
-        <section class="nav-box">
-          <p class="total-revenue-text">Total Revenue</p>
-          <p class="total-revenue">//</p>
-        </section>
-        <section class="nav-box">
-          <p class="available-percent-text">Available %</p>
-          <p class="available-percent">//</p>
-        </section>
-      </section>
       <section class="main-manager-info">
         <p class="todays-date">//</p>
         <section class="manager-search-nav">
@@ -36,13 +21,27 @@ const domUpdates = {
           <input class="input-name" type="text"></input>
           <input id="search-btn" type="submit">
         </section>
+        <section class="manager-navs">
+        <section class="nav-box">
+          <p class="all-available-rooms-txt">Available Rooms:</p>
+          <p class="all-available-rooms">//</p>
+        </section>
+        <section class="nav-box">
+          <p class="total-revenue-text">Total Revenue:</p>
+          <p class="total-revenue">//</p>
+        </section>
+        <section class="nav-box">
+          <p class="available-percent-text">Percent of Rooms available:</p>
+          <p class="available-percent">//</p>
+        </section>
+      </section>
       </section>
     `)
   },
 
   injectUserHTML() {
     $('.user-page').html(`
-    <section class="user-navs">
+    <section class="bookings-container">
       <section class="bookings-box">
         <p class="my-bookings-text">My Bookings</p>
       <section class="my-bookings"></section>
@@ -50,6 +49,7 @@ const domUpdates = {
       <section class="nav-box">
         <p class=" money-spent-text">Money Spent</p>
         <section class="money-spent">//</section>
+      </section>
       </section>
       <section class="main-user-info">
         <p class="welcome-user">//</p>
@@ -63,7 +63,6 @@ const domUpdates = {
           <input class="filter-input" type=""></input>
           <input id="search-btn" type="submit">
         </section>
-      </section>
     `)
   },
 
@@ -88,5 +87,32 @@ const domUpdates = {
       $('.my-bookings').html(`<p>${user.myBookings[i].id}</p>`)
     }
   },
+
+  // injectUserHTML() {
+  //   $('.user-page').html(`
+  //   <section class="user-navs">
+  //     <section class="bookings-box">
+  //       <p class="my-bookings-text">My Bookings</p>
+  //     <section class="my-bookings"></section>
+  //     </section>
+  //     <section class="nav-box">
+  //       <p class=" money-spent-text">Money Spent</p>
+  //       <section class="money-spent">//</section>
+  //     </section>
+  //     <section class="main-user-info">
+  //       <p class="welcome-user">//</p>
+  //       <section class="user-search-nav">
+  //         <label class="search-nav-title">Check Room Availability</label>
+  //         <input class="input-name" type="test"></input>
+  //         <input id="search-btn" type="submit">
+  //       </section>
+  //       <section class="user-search-nav">
+  //         <label class="search-nav-title">Filter By Room-Type</label>
+  //         <input class="filter-input" type=""></input>
+  //         <input id="search-btn" type="submit">
+  //       </section>
+  //     </section>
+  //   `)
+  // },
 }
 export default domUpdates;

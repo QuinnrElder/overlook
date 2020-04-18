@@ -2,6 +2,7 @@
 $primary-background: pink;
 body {
   margin: 0;
+  color: white;
 }
 main {
   background-image: url('../images/login-background.jpg');
@@ -19,24 +20,41 @@ main {
 }
 
 // THIS IS FOR THE LOGIN PAGE //
+
+.label {
+margin: 0 .5%;
+}
+
+.input {
+  margin: 0 .5%;
+  border: 3px solid rgb(161, 226, 226);
+  border-radius: 10px;
+  box-shadow: 1px .5px .5px .5px rgb(112, 128, 144);
+}
+
+.login-div {
+width: 17%;
+}
+
 .login-container {
   align-items: center;
   justify-content: center;
   height: 30vh;
   width: 70%;
-  border: 5px solid rgb(139, 141, 141);
+  border: 5px solid rgb(161, 226, 226);
   border-radius: 10px;
-  background-color: rgba(240, 248, 255, .6);
+  box-shadow: 2px 1px 1px 1px rgb(68, 78, 82);
+  background-color: rgba(44, 107, 107, 0.8);
   flex-direction: column;
-  box-shadow: 2px 2px 2px 2px rgb(112, 128, 144);
 }
 
 .login-legend {
   text-align: center;
+  margin-top: 1%;
 }
 
 .header-title {
-  font-size: 2.3em;
+  font-size: 3em;
   margin: 5vh 0 0 0;
   font-family: fantasy;
   text-align: center;
@@ -58,49 +76,49 @@ main {
 
 #login-btn {
   display: inline-block;
-  margin-left: 2%;
   height: 3em;
-  width: 5%;
+  width: 7%;
+  border: 3px solid rgb(161, 226, 226);
+  border-radius: 10px;
+  box-shadow: 1px .5px .5px .5px rgb(112, 128, 144);
 }
 
 // THIS IS FOR THE MANAGER PAGE //
-.manager-page {
+
+.main-manager-info {
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+}
+
+.manager-page {
   height: 85vh;
   width: 90%;
-  border: 5px solid rgb(57, 92, 99);
+  border: 5px solid rgb(161, 226, 226);
   border-radius: 10px;
-  background-color: rgba(240, 248, 255, .9);
+  background-color: rgba(44, 107, 107, 0.8);
   flex-direction: column;
   box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
 }
 
 .manager-navs {
-  border-right: 5px solid rgb(57, 92, 99);
-  float: left;
-  height: 100%;
   display: flex;
-  width: 15%;
+  width: 100%;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
-.nav-title {
-  font-size: 3em;
-  text-align: center;
-  font-family: fantasy;
-  margin-bottom: 2%;
-}
-
 .nav-box {
-  border: 3px solid rgb(57, 92, 99);
+  border: 3px solid rgb(161, 226, 226);
   width: 80%;
-  margin: 5%;
+  margin: 2% 5% 5% 5%;
   height: 20%;
   border-radius: 10px;
   box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.3);
+  border-radius: 10px;
 }
 
 .all-available-rooms-txt {
@@ -139,25 +157,22 @@ main {
   font-size: 2em;
 }
 
-.main-manager-info {
-  margin-left: 17%;
-}
-
 .todays-date {
-  margin: 1% 0 3% 0;
+  margin: 0;
   text-align: center;
   font-size: 10em;
   width: 98%;
 }
 
 .manager-search-nav {
-  border: 3px solid rgb(57, 92, 99);
-  margin-top: 1%;
+  border: 3px solid rgb(161, 226, 226);
+  margin: 1% 5% 0 5%;
   text-align: center;
   font-size: 5em;
   width: 98%;
   height: 25vh;
   box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
 }
 
 .search-nav-title {
@@ -165,18 +180,19 @@ main {
 }
 
 .input-name {
-  border: 2px solid rgb(57, 92, 99);
+  border: 3px solid rgb(161, 226, 226);
   width: 10%;
   height: 5vh;
   box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
 }
 
 #search-btn {
-  border: 2px solid rgb(57, 92, 99);
+  border: 3px solid rgb(161, 226, 226);
   width: 10%;
   height: 5vh;
   box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
-
+  border-radius: 10px;
 }
 
 // THIS IS FOR THE USER PAGE //
@@ -185,31 +201,32 @@ main {
   justify-content: center;
   height: 85vh;
   width: 90%;
-  border: 5px solid rgb(57, 92, 99);
+  border: 5px solid rgb(161, 226, 226);
   border-radius: 10px;
-  background-color: rgba(240, 248, 255, .8);
+  background-color: rgba(44, 107, 107, 0.8);
   flex-direction: column;
   box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
 }
 
-// .user-navs {
-//   border-right: 5px solid rgb(57, 92, 99);
-//   float: left;
-//   height: 100%;
-//   display: flex;
-//   width: 15%;
-//   justify-content: center;
-//   flex-direction: column;
-//   align-items: center;
-// }
+.bookings-container {
+  border-right: 5px solid rgb(161, 226, 226);
+  float: left;
+  height: 100%;
+  display: flex;
+  width: 25%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
 .bookings-box {
-  border: 3px solid rgb(57, 92, 99);
+  border: 3px solid rgb(161, 226, 226);
   width: 80%;
   margin: 5%;
   height: 70%;
   border-radius: 10px;
   box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.3);
+  border-radius: 10px;
 }
 
 .my-bookings-text {
@@ -228,16 +245,18 @@ main {
   font-size: 2em;
   text-align: center;
   font-family: fantasy;
+  margin-bottom: 1%;
 }
 
 .money-spent {
   font-size: 2em;
   text-align: center;
   font-family: fantasy;
+  padding-bottom: 2%;
 }
 
 .main-user-info {
-  margin-left: 17%;
+  margin-left: 26%;
 }
 
 .welcome-user {
@@ -248,57 +267,55 @@ main {
 }
 
 .user-search-nav {
-  border: 3px solid rgb(57, 92, 99);
+  border: 3px solid rgb(161, 226, 226);
   margin-top: 1%;
   text-align: center;
   font-size: 5em;
   width: 98%;
   height: 25vh;
   box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
 }
 
 .filter-input {
-  border: 2px solid rgb(57, 92, 99);
+  border: 3px solid rgb(161, 226, 226);
   width: 10%;
   height: 5vh;
   box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 850px) {
 
   // THIS IS FOR THE LOG IN PAGE //
   .login-container {
-    height: 45vh;
+    height: 60vh;
   }
 
-  .inputs-login {
-    flex-direction: column;
-    align-items: center;
+  .login-div {
+    width:100%;
+    margin: 5% 0 5% 15%;
   }
 
   #login-btn {
+    margin-left: 20%;
     width: 50%;
   }
 
+
   // THIS IS FOR THE MANAGER PAGE //
   .manager-navs {
-    float: left;
-    height: 100%;
     display: flex;
-    width: 33%;
+    width: 100%;
     justify-content: center;
     flex-direction: column;
     align-items: center;
   }
 
   .nav-box {
-    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.3);
+    margin: 1% 5%;
   }
   
-  .main-manager-info {
-    margin-left: 34%;
-  }
-
   .all-available-rooms-txt {
     font-size: 1em;
   }
@@ -324,19 +341,16 @@ main {
   }
 
   .todays-date {
-    margin: 10% 0 13% 0;
-    text-align: center;
-    font-size: 5em;
-    width: 98%;
+    display: none
   }
   
   .manager-search-nav {
-    border: 2px solid rgb(57, 92, 99);
+    border: 2px solid rgb(161, 226, 226);
     text-align: center;
     font-size: 3em;
     width: 90%;
     height: 40vh;
-    margin-left: 5%;
+    margin:2% 5%;
     box-shadow: 1.5px 1px 1px 1px rgba(75, 77, 78, 0.5);
     display: flex;
     flex-direction: column;
@@ -344,7 +358,7 @@ main {
   }
   
   .input-name {
-    border: 2px solid rgb(57, 92, 99);
+    border: 2px solid rgb(161, 226, 226);
     width: 40%;
     height: 5vh;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
@@ -352,7 +366,7 @@ main {
   }
   
   #search-btn {
-    border: 2px solid rgb(57, 92, 99);
+    border: 2px solid rgb(161, 226, 226);
     width: 43%;
     height: 5vh;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
@@ -361,12 +375,11 @@ main {
   }
 
   //  THIS IS FOR THE USER PAGE //
-
-  .user-navs {
+  .bookings-container {
     float: left;
     height: 100%;
     display: flex;
-    width: 33%;
+    width: 40%;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -389,7 +402,7 @@ main {
   }
 
   .main-user-info {
-    margin-left: 34%;
+    margin-left: 41%;
   }
 
   .welcome-user {
@@ -400,7 +413,7 @@ main {
   }
 
   .user-search-nav {
-    border: 2px solid rgb(57, 92, 99);
+    border: 2px solid rgb(161, 226, 226);
     text-align: center;
     font-size: 2em;
     width: 90%;
@@ -413,7 +426,7 @@ main {
   }
 
   .filter-input {
-    border: 2px solid rgb(57, 92, 99);
+    border: 2px solid rgb(161, 226, 226);
     width: 40%;
     height: 5vh;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
