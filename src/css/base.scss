@@ -285,6 +285,87 @@ width: 17%;
   border-radius: 10px;
 }
 
+// THIS IS FOR THE MANAGER SIDE USER INFO //
+.manager-user-info {
+  margin-left: 26%
+}
+
+.add-booking-nav {
+  margin-top: 1%;
+  text-align: center;
+  font-size: 2em;
+  width: 98%;
+  height: 43vh;
+  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+  border: 3px solid rgb(161, 226, 226);
+}
+
+.add-booking-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+   
+.add-booking-title {
+font-size: 2.5em;
+}
+.add-booking-label {
+margin: .3%;
+
+}
+.input-id {
+margin: .3%;
+width: 15%;
+border-radius: 10px;
+  border: 3px solid rgb(161, 226, 226);
+}
+
+.input-date {
+margin: .3%;
+width: 15%;
+border-radius: 10px;
+  border: 3px solid rgb(161, 226, 226);
+}
+
+.input-roomNumber {
+margin: .3%;
+width: 15%;
+border-radius: 10px;
+  border: 3px solid rgb(161, 226, 226);
+}
+.add-booking-btn {
+  border: 2px solid rgb(161, 226, 226);
+  width: 20%;
+  height: 5vh;
+  box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+}
+
+.delete-booking-btn {
+  border: 2px solid rgb(161, 226, 226);
+  width: 20%;
+  height: 5vh;
+  box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+}
+
+.delete-booking-nav {
+  border: 3px solid rgb(161, 226, 226);
+  margin-top: 1%;
+  text-align: center;
+  font-size: 5em;
+  width: 98%;
+  height: 12vh;
+  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+}
+
+.delete-booking-input {
+  width: 15%;
+  height: 30%;
+  border-radius: 10px;
+  border: 3px solid rgb(161, 226, 226);
+}
+
 @media screen and (max-width: 850px) {
 
   // THIS IS FOR THE LOG IN PAGE //
@@ -371,7 +452,6 @@ width: 17%;
     height: 5vh;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin-left: 30%;
-
   }
 
   //  THIS IS FOR THE USER PAGE //
@@ -432,4 +512,78 @@ width: 17%;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin: 10% 30%;
   }
+
+// THIS IS FOR THE MANAGER SIDE USER INFO //
+  .manager-user-info {
+    margin-left: 41%
+  }
+  
+  .add-booking-nav {
+    border: 3px solid rgb(161, 226, 226);
+    margin-top: 1%;
+    text-align: center;
+    font-size: 1.3em;
+    width: 90%;
+    margin: 2% 0 4% 5%;
+    height: 43vh;
+    box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+    border-radius: 10px;
+  }
+  
+  .add-booking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+     
+  .add-booking-title {
+  font-size: 2.5em;
+  }
+
+  .input-id {
+  margin: .3%;
+  width: 55%;
+  }
+
+  .input-date {
+  margin: .3%;
+  width: 55%;
+  }
+
+  .input-roomNumber {
+  margin: .3%;
+  width: 55%;
+  }
+
+  .delete-booking-nav {
+    border: 3px solid rgb(161, 226, 226);
+    margin-top: 1%;
+    text-align: center;
+    font-size: 2em;
+    width: 90%;
+    margin: 2% 0 4% 5%;
+    height: 24vh;
+    box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+    border-radius: 10px;
+  }
+  
+  .delete-booking-input {
+    margin: .3%;
+    width: 55%;
+  }
+
+  .add-booking-btn {
+    border: 2px solid rgb(161, 226, 226);
+    width: 48%;
+    height: 3vh;
+    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+  }
+  
+  .delete-booking-btn {
+    border: 2px solid rgb(161, 226, 226);
+    width: 48%;
+    height: 3vh;
+    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+  }
+  
 }

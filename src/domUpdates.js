@@ -19,7 +19,7 @@ const domUpdates = {
         <section class="manager-search-nav">
           <label class="search-nav-title">Search Customers Name</label>
           <input class="input-name" type="text"></input>
-          <input id="search-btn" type="submit">
+          <input class="search-user" id="search-btn" type="submit">
         </section>
         <section class="manager-navs">
         <section class="nav-box">
@@ -82,37 +82,44 @@ const domUpdates = {
     $(hideCard).toggleClass('hide')
   },
 
-  displayBookings(user) {
-    for (let i = 0; i < user.myBookings.length; i++) {
-      $('.my-bookings').html(`<p>${user.myBookings[i].id}</p>`)
-    }
-  },
-
-  // injectUserHTML() {
-  //   $('.user-page').html(`
-  //   <section class="user-navs">
-  //     <section class="bookings-box">
-  //       <p class="my-bookings-text">My Bookings</p>
-  //     <section class="my-bookings"></section>
-  //     </section>
-  //     <section class="nav-box">
-  //       <p class=" money-spent-text">Money Spent</p>
-  //       <section class="money-spent">//</section>
-  //     </section>
-  //     <section class="main-user-info">
-  //       <p class="welcome-user">//</p>
-  //       <section class="user-search-nav">
-  //         <label class="search-nav-title">Check Room Availability</label>
-  //         <input class="input-name" type="test"></input>
-  //         <input id="search-btn" type="submit">
-  //       </section>
-  //       <section class="user-search-nav">
-  //         <label class="search-nav-title">Filter By Room-Type</label>
-  //         <input class="filter-input" type=""></input>
-  //         <input id="search-btn" type="submit">
-  //       </section>
-  //     </section>
-  //   `)
+  // displayBookings(user) {
+  //   for (let i = 0; i < user.myBookings.length; i++) {
+  //     $('.my-bookings').html(`<p>${user.myBookings[i].id}</p>`)
+  //   }
   // },
+
+  injectManagerSideUserHTML() {
+    $('.user-page').html(`
+    <section class="bookings-container">
+        <section class="bookings-box">
+          <p class="my-bookings-text">My Bookings</p>
+          <section class="my-bookings"></section>
+        </section>
+        <section class="nav-box">
+          <p class=" money-spent-text">Money Spent</p>
+          <section class="money-spent">//</section>
+        </section>
+      </section>
+      <section class="manager-user-info">
+        <p class="welcome-user">//</p>
+        <section class="add-booking-nav">
+          <legend class="add-booking-title">Add a Booking:</legend>
+          <div class="add-booking-container">
+            <label class="add-booking-label" for="input-userID">Enter Your Id:</label>
+            <input class="input-id" type="test" name="input-userID"></input>
+            <label class="add-booking-label" for="input-date">Enter The Date:</label>
+            <input class="input-date" type="test" name="input-date"></input>
+            <label class="add-booking-label" for="input-roomNumber">Enter RoomNumber:</label>
+            <input class="input-roomNumber" type="test" name="input-roomNumber"></input>
+            <input class="add-booking-btn" type="submit">
+          </div>
+        </section>
+        <section class="delete-booking-nav">
+          <label class="delete-booking-title">Delete a Booking:</label>
+          <input class="delete-booking-input" type=""></input>
+          <input class="delete-booking-btn" type="submit">
+        </section>
+    `)
+  },
 }
 export default domUpdates;
