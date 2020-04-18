@@ -1,6 +1,8 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
-
+body {
+  margin: 0;
+}
 main {
   background-image: url('../images/login-background.jpg');
   background-position: center;
@@ -69,9 +71,9 @@ main {
   width: 90%;
   border: 5px solid rgb(57, 92, 99);
   border-radius: 10px;
-  background-color: rgba(240, 248, 255, .8);
+  background-color: rgba(240, 248, 255, .9);
   flex-direction: column;
-  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.5);
+  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
 }
 
 .manager-navs {
@@ -177,7 +179,7 @@ main {
 
 }
 
-// THIS IS GOR THE USER PAGE //
+// THIS IS FOR THE USER PAGE //
 .user-page {
   align-items: center;
   justify-content: center;
@@ -187,18 +189,27 @@ main {
   border-radius: 10px;
   background-color: rgba(240, 248, 255, .8);
   flex-direction: column;
-  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.5);
+  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
 }
 
-.user-navs {
-  border-right: 5px solid rgb(57, 92, 99);
-  float: left;
-  height: 100%;
-  display: flex;
-  width: 15%;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+// .user-navs {
+//   border-right: 5px solid rgb(57, 92, 99);
+//   float: left;
+//   height: 100%;
+//   display: flex;
+//   width: 15%;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+.bookings-box {
+  border: 3px solid rgb(57, 92, 99);
+  width: 80%;
+  margin: 5%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.3);
 }
 
 .my-bookings-text {
@@ -232,7 +243,7 @@ main {
 .welcome-user {
   margin: 1% 0 3% 0;
   text-align: center;
-  font-size: 10em;
+  font-size: 7em;
   width: 98%;
 }
 
@@ -384,7 +395,7 @@ main {
   .welcome-user {
     margin: 10% 0 13% 0;
     text-align: center;
-    font-size: 3em;
+    font-size: 2em;
     width: 98%;
   }
 
