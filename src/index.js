@@ -1,30 +1,28 @@
-// An example of how you tell webpack to use a CSS (SCSS) file
-import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/login-background.jpg'
-
 import './css/base.scss';
 // import './css/styles.scss';
 import $ from 'jQuery';
-import User from './User';
-import UsersRepo from './UsersRepo';
-import Room from './Room';
-import Hotel from './Hotel';
 import Booking from './Booking';
 import Bookings from './Bookings'
 import domUpdates from './domUpdates';
+import Hotel from './Hotel';
+import loginMethod from './loginMethod';
 import Manager from './Manager';
+import Room from './Room';
+import User from './User';
+import UsersRepo from './UsersRepo';
+
+import './images/login-background.jpg'
 
 let booking;
-let manager
 let bookings = new Bookings()
-let hotel = new Hotel()
-let room;
 let date = new Date().toLocaleDateString();
+let hotel = new Hotel()
+let manager
+let room;
 let user;
 let usersRepo = new UsersRepo();
 
+// THIS IS FOR THE EVENT ON THE LOGIN SCREEN BUTTON //
 $('#login-btn').on('click', function () {
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
     .then(promise => promise.json())
@@ -32,64 +30,23 @@ $('#login-btn').on('click', function () {
     .catch(err => console.error(err))
 })
 
-function windowHandler(data) {
-  userLogIn(data)
-}
+$('.search-user').on('click', function() {
+  domUpdates.injectManagerSideUserHTML()
+})
 
-function userLogIn(usersData) {
+function windowHandler(data) {
   const username = $('#login-username-input').val();
   const password = $('#password-login-input').val();
-
   if (username === "manager" && password === "overlook2020") {
     const newManager = 'manager';
-    getNeededData(newManager, usersData)
+    getNeededData(newManager, data)
   } else {
-    let ourUser = checkPassword(usersData)
-    getNeededData(ourUser, usersData)
+    let ourUser = loginMethod.checkUserNameAndPassword(data, username, password)
+    getNeededData(ourUser, data)
   }
 }
 
-function checkPassword(usersData) {
-  let username = $('#login-username-input').val();
-  let password = $('#password-login-input').val();
-
-  if (username !== "" && password !== "") {
-    let passwordId = checkPasswordLetters(username, password)
-    let correctUser = usersData.find(user => user.id === passwordId)
-    return correctUser
-  } else {
-    alert('Please fill out Username & Password correctly')
-  }
-}
-
-function checkPasswordLetters(username, password) {
-  let passwordId;
-  if (username.includes('customer') && password.includes('overlook2020')) {
-    passwordId = checkPasswordNumbers(username)
-    return passwordId
-  } else {
-    alert('Please use the correct PASSWORD')
-  }
-  return passwordId
-}
-
-function checkPasswordNumbers(username) {
-  let id1;
-  username = username.split('')
-  if (username.length === 9) {
-    id1 = (username[username.length - 1])
-    id1 = parseInt(id1)
-    return id1
-  } else if (username.length === 10) {
-    id1 = username[username.length - 2] + username[username.length - 1]
-    id1 = parseInt(id1)
-    return id1
-  } else {
-    alert('Please use the correct PASSWORD')
-  }
-}
-
-// AFTER LOG IN FETCHES FOR DATA //
+// AFTER LOGIN IS VERIFIED FETCHES FOR NEEDED API DATA //
 function getNeededData(newPerson, usersData) {
   Promise.all([
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()),
