@@ -16,6 +16,7 @@ import './images/login-background.jpg'
 let booking;
 let bookings = new Bookings()
 let date = new Date().toLocaleDateString();
+console.log(date)
 let hotel = new Hotel()
 let manager
 let room;
@@ -28,10 +29,6 @@ $('#login-btn').on('click', function () {
     .then(promise => promise.json())
     .then(data => windowHandler(data.users))
     .catch(err => console.error(err))
-})
-
-$('.search-user').on('click', function() {
-  domUpdates.injectManagerSideUserHTML()
 })
 
 function windowHandler(data) {
@@ -86,15 +83,15 @@ function reAssignBookings(apiBookings) {
 
 function reAssignUsers(usersData) {
   usersData.forEach(data => {
-    user = new User(data, bookings)
+    user = new User(data, bookings, date, hotel)
     usersRepo.allUsers.push(user)
   })
 }
 
 function reAssignUser(newPerson, usersRepo, bookings, hotel) {
   if (newPerson === 'manager') {
-    manager = new Manager(newPerson, usersRepo, bookings, hotel)
+    manager = new Manager(newPerson, usersRepo, bookings, hotel, date)
   } else {
-    user = new User(newPerson, bookings)
+    user = new User(newPerson, bookings, date, hotel)
   }
 }

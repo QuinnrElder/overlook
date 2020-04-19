@@ -15,7 +15,7 @@ const domUpdates = {
   injectManagerHTML() {
     $('.manager-page').html(`
       <section class="main-manager-info">
-        <p class="todays-date">//</p>
+        <p class="todays-date"></p>
         <section class="manager-search-nav">
           <label class="search-nav-title">Search Customers Name</label>
           <input class="input-name" type="text"></input>
@@ -24,15 +24,15 @@ const domUpdates = {
         <section class="manager-navs">
         <section class="nav-box">
           <p class="all-available-rooms-txt">Available Rooms:</p>
-          <p class="all-available-rooms">//</p>
+          <p class="all-available-rooms"></p>
         </section>
         <section class="nav-box">
           <p class="total-revenue-text">Total Revenue:</p>
-          <p class="total-revenue">//</p>
+          <p class="total-revenue"></p>
         </section>
         <section class="nav-box">
           <p class="available-percent-text">Percent of Rooms available:</p>
-          <p class="available-percent">//</p>
+          <p class="available-percent"></p>
         </section>
       </section>
       </section>
@@ -48,11 +48,11 @@ const domUpdates = {
       </section>
       <section class="nav-box">
         <p class=" money-spent-text">Money Spent</p>
-        <section class="money-spent">//</section>
+        <section class="money-spent"></section>
       </section>
       </section>
       <section class="main-user-info">
-        <p class="welcome-user">//</p>
+        <p class="welcome-user"></p>
         <section class="user-search-nav">
           <label class="search-nav-title">Check Room Availability</label>
           <input class="input-name" type="test"></input>
@@ -68,25 +68,33 @@ const domUpdates = {
 
   displayManagerInfo(manager, users, bookings, hotel, date) {
     $('.todays-date').text(date)
-    // $('.total-revinue').text()
-    // $('.available-percent')
+    $('.all-available-rooms').text(`${manager.numberOfRoomsAvailable}`)
+    $('.available-percent').text(`${manager.percentageOfRoomsAvailable}%`)
+    $('.total-revenue').text(`$${manager.todaysTotalRevenue}`)
   },
 
   displayUserInfo(user, users, bookings, hotel, date) {
-    this.displayBookings(user)
+    $('.welcome-user').text(`${user.name}`)
+    $('.money-spent').text(`$${user.totalMoneySpent}`)
     $('.welcome-user').text(`Welcome ${user.name}`)
+    this.displayAllBookings(user)
+  },
+
+  displayAllBookings(user) {
+    return user.myBookings.map( booking => {
+      $('.my-bookings').append(`
+    <section class="singleBooking">
+    ${booking.date} 
+    ${booking.roomNumber} 
+    ${booking.id}
+    </section>`)
+    })
   },
 
   flipCard(showCard, hideCard) {
     $(showCard).toggleClass('hide')
     $(hideCard).toggleClass('hide')
   },
-
-  // displayBookings(user) {
-  //   for (let i = 0; i < user.myBookings.length; i++) {
-  //     $('.my-bookings').html(`<p>${user.myBookings[i].id}</p>`)
-  //   }
-  // },
 
   injectManagerSideUserHTML() {
     $('.user-page').html(`
