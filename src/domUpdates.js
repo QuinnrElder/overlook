@@ -19,7 +19,7 @@ const domUpdates = {
         <section class="manager-search-nav">
           <label class="search-nav-title">Search Customers Name</label>
           <input class="input-name" type="text"></input>
-          <input class="search-user" id="search-btn" type="submit">
+          <button class="search-user" id="search-btn" type="submit">search</button>
         </section>
         <section class="manager-navs">
         <section class="nav-box">
@@ -55,13 +55,11 @@ const domUpdates = {
         <p class="welcome-user"></p>
         <section class="user-search-nav">
           <label class="search-nav-title">Check Room Availability</label>
+          <p class="date-helper">date format 'yyyy/mm/dd'</p>
           <input class="input-name" type="test"></input>
-          <input id="search-btn" type="submit">
-        </section>
-        <section class="user-search-nav">
           <label class="search-nav-title">Filter By Room-Type</label>
           <input class="filter-input" type=""></input>
-          <input id="search-btn" type="submit">
+          <button id="search-btn" type="submit">search</button
         </section>
     `)
   },
@@ -78,17 +76,35 @@ const domUpdates = {
     $('.money-spent').text(`$${user.totalMoneySpent}`)
     $('.welcome-user').text(`Welcome ${user.name}`)
     this.displayAllBookings(user)
+
+    $('#search-btn').click(function() {
+      console.log('search date')
+    })
   },
 
   displayAllBookings(user) {
     return user.myBookings.map( booking => {
       $('.my-bookings').append(`
     <section class="singleBooking">
-    ${booking.date} 
+    ${this.refactorDates(booking)} 
     ${booking.roomNumber} 
     ${booking.id}
     </section>`)
     })
+  },
+
+  refactorDates(booking) {
+    let dateArray = booking.date.split('/');
+    let month = dateArray[1];
+    let year = dateArray[0];
+    let day = dateArray[2];
+    if (month <= 9) {
+      let unformattedDate = `${month}/${day}/${year}`;
+      return unformattedDate
+    } else {
+      let unformattedDate = `${month}/${day}/${year}`;
+      return unformattedDate
+    }
   },
 
   flipCard(showCard, hideCard) {
