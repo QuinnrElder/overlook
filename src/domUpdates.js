@@ -15,24 +15,24 @@ const domUpdates = {
   injectManagerHTML() {
     $('.manager-page').html(`
       <section class="main-manager-info">
-        <p class="todays-date">//</p>
+        <p class="todays-date"></p>
         <section class="manager-search-nav">
           <label class="search-nav-title">Search Customers Name</label>
           <input class="input-name" type="text"></input>
-          <input class="search-user" id="search-btn" type="submit">
+          <button class="search-user" id="search-btn" type="submit">search</button>
         </section>
         <section class="manager-navs">
         <section class="nav-box">
           <p class="all-available-rooms-txt">Available Rooms:</p>
-          <p class="all-available-rooms">//</p>
+          <p class="all-available-rooms"></p>
         </section>
         <section class="nav-box">
           <p class="total-revenue-text">Total Revenue:</p>
-          <p class="total-revenue">//</p>
+          <p class="total-revenue"></p>
         </section>
         <section class="nav-box">
           <p class="available-percent-text">Percent of Rooms available:</p>
-          <p class="available-percent">//</p>
+          <p class="available-percent"></p>
         </section>
       </section>
       </section>
@@ -48,45 +48,27 @@ const domUpdates = {
       </section>
       <section class="nav-box">
         <p class=" money-spent-text">Money Spent</p>
-        <section class="money-spent">//</section>
+        <section class="money-spent"></section>
       </section>
       </section>
       <section class="main-user-info">
-        <p class="welcome-user">//</p>
+        <p class="welcome-user"></p>
         <section class="user-search-nav">
           <label class="search-nav-title">Check Room Availability</label>
+          <p class="date-helper">date format 'yyyy/mm/dd'</p>
           <input class="input-name" type="test"></input>
-          <input id="search-btn" type="submit">
-        </section>
-        <section class="user-search-nav">
           <label class="search-nav-title">Filter By Room-Type</label>
-          <input class="filter-input" type=""></input>
-          <input id="search-btn" type="submit">
+          <select class="filter-input" type="">
+            <option value="none">none</option>
+            <option>residential suite</option>
+            <option>suite</option>
+            <option>single room</option>
+            <option>junior suite</option>
+          </select>
+          <button id="search-btn" type="submit">search</button
         </section>
     `)
   },
-
-  displayManagerInfo(manager, users, bookings, hotel, date) {
-    $('.todays-date').text(date)
-    // $('.total-revinue').text()
-    // $('.available-percent')
-  },
-
-  displayUserInfo(user, users, bookings, hotel, date) {
-    this.displayBookings(user)
-    $('.welcome-user').text(`Welcome ${user.name}`)
-  },
-
-  flipCard(showCard, hideCard) {
-    $(showCard).toggleClass('hide')
-    $(hideCard).toggleClass('hide')
-  },
-
-  // displayBookings(user) {
-  //   for (let i = 0; i < user.myBookings.length; i++) {
-  //     $('.my-bookings').html(`<p>${user.myBookings[i].id}</p>`)
-  //   }
-  // },
 
   injectManagerSideUserHTML() {
     $('.user-page').html(`
@@ -121,5 +103,64 @@ const domUpdates = {
         </section>
     `)
   },
+
+  displayManagerInfo(manager, users, bookings, hotel, date) {
+    $('.todays-date').text(date)
+    $('.all-available-rooms').text(`${manager.numberOfRoomsAvailable}`)
+    $('.available-percent').text(`${manager.percentageOfRoomsAvailable}%`)
+    $('.total-revenue').text(`$${manager.todaysTotalRevenue}`)
+  },
+
+  displayUserInfo(user, users, bookings, hotel, date) {
+    $('.welcome-user').text(`${user.name}`)
+    $('.money-spent').text(`$${user.totalMoneySpent}`)
+    $('.welcome-user').text(`Welcome ${user.name}`)
+    this.displayAllBookings(user)
+
+    $('#search-btn').click(function () {
+      let date = $('.input-name').val()
+      let filterType = $('.filter-input').val()
+      const availableRooms = bookings.findingRoomsAvailableToday(date, hotel, filterType)
+      if (availableRooms.length === 0) {
+        alert(`WE FIERCELY APOLOGIZE BUT THERE ARE NO ROOMS AVAILABLE FOR THAT DATE!
+         Please choose another date!!`
+        )
+      }
+      
+    })
+
+
+  },
+
+  displayAllBookings(user) {
+    return user.myBookings.map(booking => {
+      $('.my-bookings').append(`
+    <section class="singleBooking">
+    ${this.refactorDates(booking)} 
+    ${booking.roomNumber} 
+    ${booking.id}
+    </section>`)
+    })
+  },
+
+  refactorDates(booking) {
+    let dateArray = booking.date.split('/');
+    let month = dateArray[1];
+    let year = dateArray[0];
+    let day = dateArray[2];
+    if (month <= 9) {
+      let unformattedDate = `${month}/${day}/${year}`;
+      return unformattedDate
+    } else {
+      let unformattedDate = `${month}/${day}/${year}`;
+      return unformattedDate
+    }
+  },
+
+  flipCard(showCard, hideCard) {
+    $(showCard).toggleClass('hide')
+    $(hideCard).toggleClass('hide')
+  },
+
 }
 export default domUpdates;

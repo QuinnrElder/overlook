@@ -13,8 +13,7 @@ import UsersRepo from './UsersRepo';
 
 import './images/login-background.jpg'
 
-let booking;
-let bookings = new Bookings()
+let bookings;
 let date = new Date().toLocaleDateString();
 let hotel = new Hotel()
 let manager
@@ -28,10 +27,6 @@ $('#login-btn').on('click', function () {
     .then(promise => promise.json())
     .then(data => windowHandler(data.users))
     .catch(err => console.error(err))
-})
-
-$('.search-user').on('click', function() {
-  domUpdates.injectManagerSideUserHTML()
 })
 
 function windowHandler(data) {
@@ -60,11 +55,9 @@ function reassignData(apiRooms, apiBookings, newPerson, usersData) {
   reAssignUsers(usersData)
   reAssignUser(newPerson, usersRepo.allUsers, bookings, hotel)
   if (manager) {
-    console.log(manager)
     domUpdates.flipCard($('.manager-page'), $('.login-container'))
     domUpdates.displayManagerPage(manager, usersRepo, bookings, hotel, date)
   } else {
-    console.log(user)
     domUpdates.flipCard($('.user-page'), $('.login-container'))
     domUpdates.displayUserPage(user, usersRepo, bookings, hotel, date)
   }
@@ -78,23 +71,25 @@ function reAssignRooms(apiRooms) {
 }
 
 function reAssignBookings(apiBookings) {
-  apiBookings.forEach(apiBooking => {
-    booking = new Booking(apiBooking)
-    bookings.allBookings.push(booking)
+  let map = apiBookings.map(apiBooking => { 
+    let booking = new Booking(apiBooking)
+    return booking
   })
+  bookings = new Bookings(map)
+  return bookings
 }
 
 function reAssignUsers(usersData) {
   usersData.forEach(data => {
-    user = new User(data, bookings)
+    user = new User(data, bookings, date, hotel)
     usersRepo.allUsers.push(user)
   })
 }
 
 function reAssignUser(newPerson, usersRepo, bookings, hotel) {
   if (newPerson === 'manager') {
-    manager = new Manager(newPerson, usersRepo, bookings, hotel)
+    manager = new Manager(newPerson, usersRepo, bookings, hotel, date)
   } else {
-    user = new User(newPerson, bookings)
+    user = new User(newPerson, bookings, date, hotel)
   }
 }
