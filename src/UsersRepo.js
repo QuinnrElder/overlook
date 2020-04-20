@@ -1,6 +1,6 @@
 class UserRepo {
-  constructor() {
-    this.allUsers = [];
+  constructor(newUsers) {
+    this.allUsers = newUsers;
   }
 }
 export default UserRepo;

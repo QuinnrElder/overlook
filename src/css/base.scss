@@ -242,6 +242,14 @@ width: 17%;
   font-family: fantasy;
 }
 
+.singleBooking {
+  border: 2px solid black;
+}
+
+.booking-info {
+border: 2px solid black;
+}
+
 .money-spent-text{
   font-size: 2em;
   text-align: center;
@@ -290,6 +298,28 @@ width: 17%;
   box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
   border-radius: 10px;
 }
+
+.available-room-container {
+
+}
+
+.available-room-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1%;
+  text-align: center;
+  font-size: 2em;
+  width: 60%;
+  height: 43vh;
+  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+  border: 3px solid rgb(161, 226, 226);
+}
+
+
+
+
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
 .manager-user-info {
