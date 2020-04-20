@@ -15,11 +15,8 @@ import './images/login-background.jpg'
 
 let bookings;
 let date = new Date().toLocaleDateString();
-let hotel = new Hotel()
-let manager
-let room;
-let user;
-let usersRepo = new UsersRepo();
+let hotel;
+let usersRepo;
 
 // THIS IS FOR THE EVENT ON THE LOGIN SCREEN BUTTON //
 $('#login-btn').on('click', function () {
@@ -29,67 +26,87 @@ $('#login-btn').on('click', function () {
     .catch(err => console.error(err))
 })
 
-function windowHandler(data) {
+function windowHandler(apiUsers) {
   const username = $('#login-username-input').val();
   const password = $('#password-login-input').val();
   if (username === "manager" && password === "overlook2020") {
     const newManager = 'manager';
-    getNeededData(newManager, data)
+    getNeededData(newManager, apiUsers)
   } else {
-    let ourUser = loginMethod.checkUserNameAndPassword(data, username, password)
-    getNeededData(ourUser, data)
+    let ourUser = loginMethod.checkUserNameAndPassword(apiUsers, username, password)
+    getNeededData(ourUser, apiUsers)
   }
 }
 
 // AFTER LOGIN IS VERIFIED FETCHES FOR NEEDED API DATA //
-function getNeededData(newPerson, usersData) {
+function getNeededData(newPerson, apiUsers) {
   Promise.all([
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()),
     fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()),
-  ]).then(data => reassignData(data[0].rooms, data[1].bookings, newPerson, usersData))
+  ]).then(data => reassignData(data[0].rooms, data[1].bookings, newPerson, apiUsers))
 }
 
-function reassignData(apiRooms, apiBookings, newPerson, usersData) {
-  reAssignRooms(apiRooms);
+function reassignData(apiRooms, apiBookings, newPerson, apiUsers) {
   reAssignBookings(apiBookings)
-  reAssignUsers(usersData)
-  reAssignUser(newPerson, usersRepo.allUsers, bookings, hotel)
-  if (manager) {
+  reAssignRooms(apiRooms, bookings);
+  reAssignUsers(apiUsers)
+  const currentUser = reAssignUser(newPerson)
+  if (currentUser.id === 'manager') {
     domUpdates.flipCard($('.manager-page'), $('.login-container'))
-    domUpdates.displayManagerPage(manager, usersRepo, bookings, hotel, date)
+    domUpdates.displayManagerPage(currentUser, usersRepo, bookings, hotel, date)
   } else {
     domUpdates.flipCard($('.user-page'), $('.login-container'))
-    domUpdates.displayUserPage(user, usersRepo, bookings, hotel, date)
+    domUpdates.displayUserPage(currentUser, usersRepo, bookings, hotel, date)
   }
 }
 
-function reAssignRooms(apiRooms) {
-  apiRooms.forEach(apiRoom => {
-    room = new Room(apiRoom)
-    hotel.allRooms.push(room)
-  })
-}
 
 function reAssignBookings(apiBookings) {
-  let map = apiBookings.map(apiBooking => { 
+  let newBookings = apiBookings.map(apiBooking => {
     let booking = new Booking(apiBooking)
     return booking
   })
-  bookings = new Bookings(map)
+  bookings = new Bookings(newBookings)
   return bookings
 }
 
-function reAssignUsers(usersData) {
-  usersData.forEach(data => {
-    user = new User(data, bookings, date, hotel)
-    usersRepo.allUsers.push(user)
+function reAssignRooms(apiRooms) {
+  let newRooms = apiRooms.map(apiRoom => {
+    let room = new Room(apiRoom)
+    return room
   })
+  hotel = new Hotel(bookings, newRooms)
+  return hotel
 }
 
-function reAssignUser(newPerson, usersRepo, bookings, hotel) {
+function reAssignUsers(apiUsers) {
+  let newUsers = apiUsers.map(data => {
+    let user = new User(data, hotel, date)
+    return user
+  })
+  usersRepo = new UsersRepo(newUsers)
+  return usersRepo
+}
+
+function reAssignUser(newPerson) {
   if (newPerson === 'manager') {
-    manager = new Manager(newPerson, usersRepo, bookings, hotel, date)
+    let manager = new Manager(newPerson, usersRepo, hotel, date)
+    return manager
   } else {
-    user = new User(newPerson, bookings, date, hotel)
+    let user = new User(newPerson, hotel, date)
+    return user
   }
 }
+
+
+
+$('.search-rooms').click(function (event) {
+  console.log(event.target)
+  let date = $('.input-name').val()
+  let filterType = $('.filter-input').val()
+  const availableRooms = bookings.findingRoomsAvailableToday(date, hotel, filterType)
+  if (availableRooms.length === 0) {
+    alert(`WE FIERCELY APOLOGIZE BUT THERE ARE NO ROOMS AVAILABLE FOR THAT DATE!
+       Please choose another date!!`)
+  }
+})

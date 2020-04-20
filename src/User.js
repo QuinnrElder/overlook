@@ -1,9 +1,9 @@
 class User {
-  constructor(data, bookingsData, date, hotel) {
-    this.id = data.id;
-    this.name = data.name;
+  constructor(user, hotel, date) {
+    this.id = user.id;
+    this.name = user.name;
     this.date = date;
-    this.myBookings = bookingsData.allBookings.filter(booking => booking.userID === data.id);
+    this.myBookings = hotel.hotelBookings.allBookings.filter(booking => booking.userID === user.id);
     this.listOfRoomsStayedIn = this.findMyRooms(hotel.allRooms);
     this.totalMoneySpent = this.getTotalSpent()
   }

@@ -12,6 +12,7 @@ const domUpdates = {
     this.displayUserInfo(user, usersRepo, bookings, hotel, date)
   },
 
+
   injectManagerHTML() {
     $('.manager-page').html(`
       <section class="main-manager-info">
@@ -54,8 +55,10 @@ const domUpdates = {
       <section class="main-user-info">
         <p class="welcome-user"></p>
         <section class="user-search-nav">
+          <section class=".pop-up-container"></section>
           <label class="search-nav-title">Check Room Availability</label>
           <p class="date-helper">date format 'yyyy/mm/dd'</p>
+          <section class="pop-up-container"></section>
           <input class="input-name" type="test"></input>
           <label class="search-nav-title">Filter By Room-Type</label>
           <select class="filter-input" type="">
@@ -65,7 +68,18 @@ const domUpdates = {
             <option>single room</option>
             <option>junior suite</option>
           </select>
-          <button id="search-btn" type="submit">search</button
+          <button class="search-rooms" id="search-btn" type="submit">search</button
+        </section>
+    `)
+  },
+
+  injectUserSidePopUpHTML() {
+    $('.pop-up-container').html(`
+    <section class="available-room-nav">
+          <legend class="add-booking-title">Available Rooms</legend>
+          <div class="available-room-container">
+            
+          </div>
         </section>
     `)
   },
@@ -117,28 +131,39 @@ const domUpdates = {
     $('.welcome-user').text(`Welcome ${user.name}`)
     this.displayAllBookings(user)
 
-    $('#search-btn').click(function () {
-      let date = $('.input-name').val()
-      let filterType = $('.filter-input').val()
-      const availableRooms = bookings.findingRoomsAvailableToday(date, hotel, filterType)
-      if (availableRooms.length === 0) {
-        alert(`WE FIERCELY APOLOGIZE BUT THERE ARE NO ROOMS AVAILABLE FOR THAT DATE!
-         Please choose another date!!`
-        )
-      }
-      
-    })
-
-
+    // $('#search-btn').click(function () {
+    //   let date = $('.input-name').val()
+    //   let filterType = $('.filter-input').val()
+    //   const availableRooms = bookings.findingRoomsAvailableToday(date, hotel, filterType)
+    //   if (availableRooms.length === 0) {
+    //     alert(`WE FIERCELY APOLOGIZE BUT THERE ARE NO ROOMS AVAILABLE FOR THAT DATE!
+    //      Please choose another date!!`
+    //     )
+    //   }
+    // })
   },
 
   displayAllBookings(user) {
     return user.myBookings.map(booking => {
       $('.my-bookings').append(`
     <section class="singleBooking">
-    ${this.refactorDates(booking)} 
-    ${booking.roomNumber} 
-    ${booking.id}
+    <p class="booking-info">${this.refactorDates(booking)}</p>
+    <p class="booking-info">${booking.roomNumber}</p>
+    <p class="booking-info">${booking.id}</p>
+    </section>`)
+    })
+  },
+
+  displayAvailableRoomsInfo(availableRooms) {
+    return availableRooms.map(room => {
+      $('.my-bookings').append(`
+    <section class="singleBooking">
+    <p class="booking-info">Room Number: ${room.number}</p>
+    <p class="booking-info">Room Type: ${room.roomType}</p>
+    <p class="booking-info">Has Bidet: ${room.bidet}</p>
+    <p class="booking-info">Bed Size: ${room.bedSize}</p>
+    <p class="booking-info">Number Of Beds: ${room.numBeds}</p>
+    <p class="booking-info">Cost Per Night: ${room.costPerNight}</p>
     </section>`)
     })
   },

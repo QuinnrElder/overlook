@@ -1,6 +1,7 @@
 class Hotel {
-  constructor() {
-    this.allRooms = [];
+  constructor(allBookings, allRooms) {
+    this.hotelBookings = allBookings
+    this.allRooms = allRooms;
   }
 }
 export default Hotel;

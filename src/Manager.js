@@ -1,14 +1,13 @@
 class Manager {
-  constructor(manager, usersData, bookings, hotel, date) {
+  constructor(manager, usersData, hotel, date) {
     this.id = manager
     this.users = usersData;
-    this.bookings = bookings.allBookings
+    this.bookings = hotel.hotelBookings;
     this.rooms = hotel.allRooms;
     this.date = this.getDateSyntax(date)
     this.numberOfRoomsAvailable = this.findNumberOfRoomsAvailable();
     this.percentageOfRoomsAvailable = this.findPercentOfAvailableRooms();
     this.todaysTotalRevenue = this.getTotalRevenue();
-    console.log(hotel)
   }
 
   getDateSyntax(date) {
@@ -26,8 +25,7 @@ class Manager {
   }
 
   findNumberOfRoomsAvailable() {
-    let matchingBookings = this.bookings.filter(booking => booking.date === this.date)
-    console.log(matchingBookings)
+    let matchingBookings = this.bookings.allBookings.filter(booking => booking.date === this.date)
     return (this.rooms.length - matchingBookings.length)
   }
 
@@ -36,7 +34,7 @@ class Manager {
   }
 
   getTotalRevenue() {
-    let matchingBookings = this.bookings.filter(booking => booking.date === this.date);
+    let matchingBookings = this.bookings.allBookings.filter(booking => booking.date === this.date);
     let profits = matchingBookings.reduce((acc, match) => {
       this.rooms.forEach(room => {
         if (room.number === match.roomNumber) {
