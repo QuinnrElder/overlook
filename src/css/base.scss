@@ -83,6 +83,8 @@ width: 17%;
   box-shadow: 1px .5px .5px .5px rgb(112, 128, 144);
 }
 
+
+
 // THIS IS FOR THE MANAGER PAGE //
 
 .main-manager-info {
@@ -173,10 +175,22 @@ width: 17%;
   height: 25vh;
   box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .search-nav-title {
   display: block;
+}
+
+.input-names {
+  border: 3px solid rgb(161, 226, 226);
+  width: 10%;
+  height: 5vh;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
 }
 
 .input-name {
@@ -187,13 +201,18 @@ width: 17%;
   border-radius: 10px;
 }
 
-#search-btn {
+#search-user {
   border: 3px solid rgb(161, 226, 226);
   width: 10%;
   height: 5vh;
   box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
 
 // THIS IS FOR THE USER PAGE //
 .user-page {
@@ -228,6 +247,19 @@ width: 17%;
   box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.3);
   border-radius: 10px;
   overflow: scroll;
+}
+
+.pop-up-container {
+  height: 50vh;
+  width: 50%;
+  border: 5px solid rgb(161, 226, 226);
+  border-radius: 10px;
+  background-color: white;
+  flex-direction: column;
+  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
+  position: absolute;
+  overflow: scroll;
+  color:black;
 }
 
 .my-bookings-text {
@@ -299,10 +331,6 @@ border: 2px solid black;
   border-radius: 10px;
 }
 
-.available-room-container {
-
-}
-
 .available-room-nav {
   display: flex;
   flex-direction: column;
@@ -317,9 +345,15 @@ border: 2px solid black;
   border: 3px solid rgb(161, 226, 226);
 }
 
+#search-btn {
+  border: 3px solid rgb(161, 226, 226);
+  width: 10%;
+  height: 5vh;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+}
 
-
-
+ 
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
 .manager-user-info {
@@ -336,6 +370,8 @@ border: 2px solid black;
   border-radius: 10px;
   border: 3px solid rgb(161, 226, 226);
 }
+
+
 
 .add-booking-container {
   display: flex;
@@ -460,10 +496,22 @@ border-radius: 10px;
   .todays-date {
     display: none
   }
+
+  #search-user {
+    border: 3px solid rgb(161, 226, 226);
+    width: 40%;
+    height: 5vh;
+    box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
   .manager-search-nav {
     border: 2px solid rgb(161, 226, 226);
     text-align: center;
+    
     font-size: 3em;
     width: 90%;
     height: 40vh;
@@ -481,8 +529,24 @@ border-radius: 10px;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin: 10% 30%;
   }
+
+  .input-names {
+    border: 2px solid rgb(161, 226, 226);
+    width: 40%;
+    height: 5vh;
+    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+    margin: 10% 30%;
+  }
   
   #search-btn {
+    border: 2px solid rgb(161, 226, 226);
+    width: 43%;
+    height: 5vh;
+    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+    margin-left: 30%;
+  }
+
+  .search-btn {
     border: 2px solid rgb(161, 226, 226);
     width: 43%;
     height: 5vh;
@@ -547,6 +611,11 @@ border-radius: 10px;
     height: 5vh;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin: 10% 30%;
+  }
+
+  .pop-up-container{
+    height: 60vh;
+    width: 40%;
   }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
