@@ -3,7 +3,8 @@ import './css/base.scss';
 import $ from 'jQuery';
 import Booking from './Booking';
 import Bookings from './Bookings'
-import domUpdates from './domUpdates';
+import domManagerUpdates from './domManagerUpdates';
+import domUserUpdates from './domUserUpdates';
 import Hotel from './Hotel';
 import loginMethod from './loginMethod';
 import Manager from './Manager';
@@ -50,16 +51,37 @@ function reassignData(apiRooms, apiBookings, newPerson, apiUsers) {
   reAssignBookings(apiBookings)
   reAssignRooms(apiRooms, bookings);
   reAssignUsers(apiUsers)
-  const currentUser = reAssignUser(newPerson)
+  let currentUser = reAssignUser(newPerson)
+
   if (currentUser.id === 'manager') {
-    domUpdates.flipCard($('.manager-page'), $('.login-container'))
-    domUpdates.displayManagerPage(currentUser, usersRepo, bookings, hotel, date)
+    console.log(currentUser)
+    domManagerUpdates.flipCard($('.manager-page'), $('.login-container'))
+    domManagerUpdates.displayManagerPage(currentUser, usersRepo, bookings, hotel, date)
   } else {
-    domUpdates.flipCard($('.user-page'), $('.login-container'))
-    domUpdates.displayUserPage(currentUser, usersRepo, bookings, hotel, date)
+    console.log(currentUser)
+    domUserUpdates.flipCard($('.user-page'), $('.login-container'))
+    domUserUpdates.displayUserPage(currentUser)
   }
 }
 
+// MANAGER EVENT LISTENERS //
+$('#search-user').on('click', function () {
+  $('.user-pop-up-window').toggleClass('hide')
+  domManagerUpdates.injectManagerSideUserWindowHTML()
+})
+
+// USER EVENT LISTENERS //
+$('#search-btn').click(function () {
+  let date = $('.input-name').val()
+  let filterType = $('.filter-input').val()
+  const availableRooms = bookings.findingRoomsAvailableToday(date, hotel, filterType)
+  if (availableRooms.length === 0) {
+    alert(`WE FIERCELY APOLOGIZE BUT THERE ARE NO ROOMS AVAILABLE FOR THAT DATE!
+         Please choose another date!!`)
+  }
+  $('.pop-up-container').toggleClass('hide')
+  domUserUpdates.displayAvailableRoomsInfo(availableRooms)
+})
 
 function reAssignBookings(apiBookings) {
   let newBookings = apiBookings.map(apiBooking => {
@@ -97,16 +119,3 @@ function reAssignUser(newPerson) {
     return user
   }
 }
-
-
-
-$('.search-rooms').click(function (event) {
-  console.log(event.target)
-  let date = $('.input-name').val()
-  let filterType = $('.filter-input').val()
-  const availableRooms = bookings.findingRoomsAvailableToday(date, hotel, filterType)
-  if (availableRooms.length === 0) {
-    alert(`WE FIERCELY APOLOGIZE BUT THERE ARE NO ROOMS AVAILABLE FOR THAT DATE!
-       Please choose another date!!`)
-  }
-})
