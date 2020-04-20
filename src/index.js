@@ -13,10 +13,8 @@ import UsersRepo from './UsersRepo';
 
 import './images/login-background.jpg'
 
-let booking;
-let bookings = new Bookings()
+let bookings;
 let date = new Date().toLocaleDateString();
-console.log(date)
 let hotel = new Hotel()
 let manager
 let room;
@@ -57,11 +55,9 @@ function reassignData(apiRooms, apiBookings, newPerson, usersData) {
   reAssignUsers(usersData)
   reAssignUser(newPerson, usersRepo.allUsers, bookings, hotel)
   if (manager) {
-    console.log(manager)
     domUpdates.flipCard($('.manager-page'), $('.login-container'))
     domUpdates.displayManagerPage(manager, usersRepo, bookings, hotel, date)
   } else {
-    console.log(user)
     domUpdates.flipCard($('.user-page'), $('.login-container'))
     domUpdates.displayUserPage(user, usersRepo, bookings, hotel, date)
   }
@@ -75,10 +71,12 @@ function reAssignRooms(apiRooms) {
 }
 
 function reAssignBookings(apiBookings) {
-  apiBookings.forEach(apiBooking => {
-    booking = new Booking(apiBooking)
-    bookings.allBookings.push(booking)
+  let map = apiBookings.map(apiBooking => { 
+    let booking = new Booking(apiBooking)
+    return booking
   })
+  bookings = new Bookings(map)
+  return bookings
 }
 
 function reAssignUsers(usersData) {

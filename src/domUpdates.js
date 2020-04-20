@@ -58,58 +58,16 @@ const domUpdates = {
           <p class="date-helper">date format 'yyyy/mm/dd'</p>
           <input class="input-name" type="test"></input>
           <label class="search-nav-title">Filter By Room-Type</label>
-          <input class="filter-input" type=""></input>
+          <select class="filter-input" type="">
+            <option value="none">none</option>
+            <option>residential suite</option>
+            <option>suite</option>
+            <option>single room</option>
+            <option>junior suite</option>
+          </select>
           <button id="search-btn" type="submit">search</button
         </section>
     `)
-  },
-
-  displayManagerInfo(manager, users, bookings, hotel, date) {
-    $('.todays-date').text(date)
-    $('.all-available-rooms').text(`${manager.numberOfRoomsAvailable}`)
-    $('.available-percent').text(`${manager.percentageOfRoomsAvailable}%`)
-    $('.total-revenue').text(`$${manager.todaysTotalRevenue}`)
-  },
-
-  displayUserInfo(user, users, bookings, hotel, date) {
-    $('.welcome-user').text(`${user.name}`)
-    $('.money-spent').text(`$${user.totalMoneySpent}`)
-    $('.welcome-user').text(`Welcome ${user.name}`)
-    this.displayAllBookings(user)
-
-    $('#search-btn').click(function() {
-      console.log('search date')
-    })
-  },
-
-  displayAllBookings(user) {
-    return user.myBookings.map( booking => {
-      $('.my-bookings').append(`
-    <section class="singleBooking">
-    ${this.refactorDates(booking)} 
-    ${booking.roomNumber} 
-    ${booking.id}
-    </section>`)
-    })
-  },
-
-  refactorDates(booking) {
-    let dateArray = booking.date.split('/');
-    let month = dateArray[1];
-    let year = dateArray[0];
-    let day = dateArray[2];
-    if (month <= 9) {
-      let unformattedDate = `${month}/${day}/${year}`;
-      return unformattedDate
-    } else {
-      let unformattedDate = `${month}/${day}/${year}`;
-      return unformattedDate
-    }
-  },
-
-  flipCard(showCard, hideCard) {
-    $(showCard).toggleClass('hide')
-    $(hideCard).toggleClass('hide')
   },
 
   injectManagerSideUserHTML() {
@@ -145,5 +103,64 @@ const domUpdates = {
         </section>
     `)
   },
+
+  displayManagerInfo(manager, users, bookings, hotel, date) {
+    $('.todays-date').text(date)
+    $('.all-available-rooms').text(`${manager.numberOfRoomsAvailable}`)
+    $('.available-percent').text(`${manager.percentageOfRoomsAvailable}%`)
+    $('.total-revenue').text(`$${manager.todaysTotalRevenue}`)
+  },
+
+  displayUserInfo(user, users, bookings, hotel, date) {
+    $('.welcome-user').text(`${user.name}`)
+    $('.money-spent').text(`$${user.totalMoneySpent}`)
+    $('.welcome-user').text(`Welcome ${user.name}`)
+    this.displayAllBookings(user)
+
+    $('#search-btn').click(function () {
+      let date = $('.input-name').val()
+      let filterType = $('.filter-input').val()
+      const availableRooms = bookings.findingRoomsAvailableToday(date, hotel, filterType)
+      if (availableRooms.length === 0) {
+        alert(`WE FIERCELY APOLOGIZE BUT THERE ARE NO ROOMS AVAILABLE FOR THAT DATE!
+         Please choose another date!!`
+        )
+      }
+      
+    })
+
+
+  },
+
+  displayAllBookings(user) {
+    return user.myBookings.map(booking => {
+      $('.my-bookings').append(`
+    <section class="singleBooking">
+    ${this.refactorDates(booking)} 
+    ${booking.roomNumber} 
+    ${booking.id}
+    </section>`)
+    })
+  },
+
+  refactorDates(booking) {
+    let dateArray = booking.date.split('/');
+    let month = dateArray[1];
+    let year = dateArray[0];
+    let day = dateArray[2];
+    if (month <= 9) {
+      let unformattedDate = `${month}/${day}/${year}`;
+      return unformattedDate
+    } else {
+      let unformattedDate = `${month}/${day}/${year}`;
+      return unformattedDate
+    }
+  },
+
+  flipCard(showCard, hideCard) {
+    $(showCard).toggleClass('hide')
+    $(hideCard).toggleClass('hide')
+  },
+
 }
 export default domUpdates;
