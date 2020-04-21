@@ -18,6 +18,7 @@ let bookings;
 let date = new Date().toLocaleDateString();
 let hotel;
 let usersRepo;
+let user;
 
 // THIS IS FOR THE EVENT ON THE LOGIN SCREEN BUTTON //
 $('#login-btn').on('click', function () {
@@ -54,7 +55,6 @@ function reassignData(apiRooms, apiBookings, newPerson, apiUsers) {
   let currentUser = reAssignUser(newPerson)
 
   if (currentUser.id === 'manager') {
-    console.log(currentUser)
     domManagerUpdates.flipCard($('.manager-page'), $('.login-container'))
     domManagerUpdates.displayManagerPage(currentUser, usersRepo, bookings, hotel, date)
   } else {
@@ -80,7 +80,19 @@ $('#search-btn').click(function () {
          Please choose another date!!`)
   }
   $('.pop-up-container').toggleClass('hide')
-  domUserUpdates.displayAvailableRoomsInfo(availableRooms)
+  domUserUpdates.displayAvailableRoomsInfo(availableRooms, date)
+})
+
+$('#close-x').on('click', function () {
+  $('.pop-up-container').toggleClass('hide')
+})
+
+$('.pop-up-container').on('click', function (event) {
+  if (event.target.classList.contains('book-room-btn')) {
+    const room = event.target.id;
+    const date = event.target.dataset.id;
+    user.postBooking(room, date)
+  }
 })
 
 function reAssignBookings(apiBookings) {
@@ -115,7 +127,7 @@ function reAssignUser(newPerson) {
     let manager = new Manager(newPerson, usersRepo, hotel, date)
     return manager
   } else {
-    let user = new User(newPerson, hotel, date)
+    user = new User(newPerson, hotel, date)
     return user
   }
 }

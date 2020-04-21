@@ -27,5 +27,23 @@ class User {
     }, 0)
     return number.toFixed(2)
   }
+
+  postBooking(room, dates) {
+    let roomNumbers = parseInt(room)
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userID: this.id,
+        date: dates,
+        roomNumber: roomNumbers
+      })
+    })
+      .then(response => response.json())
+      .then(data => console.log('success', data))
+      .catch(err => console.error(err))
+  }
 }
 export default User;

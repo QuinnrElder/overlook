@@ -4,9 +4,6 @@ class Bookings {
   }
 
   findingRoomsAvailableToday(today, hotel, filterType) {
-    console.log(today)
-    console.log(hotel)
-    console.log(filterType)
     if (filterType === 'none') {
       let bookingNums = this.getAllRoomNumbersBookedToday(today)
       let availableRooms = this.findAvailableRoomNumbers(bookingNums, hotel)
