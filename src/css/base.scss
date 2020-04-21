@@ -254,12 +254,12 @@ width: 17%;
   width: 50%;
   border: 5px solid rgb(161, 226, 226);
   border-radius: 10px;
-  background-color: white;
+  background-color: rgba(204, 253, 249, .8);
   flex-direction: column;
   box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
   position: absolute;
-  overflow: scroll;
   color:black;
+  overflow: scroll;
 }
 
 .my-bookings-text {
@@ -269,17 +269,28 @@ width: 17%;
 }
 
 .my-bookings {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
   font-size: 2em;
   text-align: center;
   font-family: fantasy;
 }
 
 .singleBooking {
-  border: 2px solid black;
+  border: 3px solid rgb(161, 226, 226);
+  border-radius: 10px;
+  background-color: rgba(44, 107, 107, 0.8);
+  width: 80%;
+  margin: 5%;
+  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
+  overflow: scroll;
 }
 
 .booking-info {
-border: 2px solid black;
+  margin: 0;
+  padding: 2%;
+  font-size: .6em;
 }
 
 .money-spent-text{
@@ -353,7 +364,13 @@ border: 2px solid black;
   border-radius: 10px;
 }
 
- 
+ .book-room-btn {
+  border: 3px solid rgb(161, 226, 226);
+  width: 10%;
+  height: 5vh;
+  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
+  border-radius: 10px;
+ }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
 .manager-user-info {
@@ -616,6 +633,8 @@ border-radius: 10px;
   .pop-up-container{
     height: 60vh;
     width: 40%;
+    color: white;
+    font-size: 2em;
   }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //

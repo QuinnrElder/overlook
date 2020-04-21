@@ -6,17 +6,6 @@ const domUserUpdates = {
     this.displayUserInfo(user)
   },
 
-  injectUserSidePopUpHTML() {
-    $('.pop-up-container').html(`
-    <section class="available-room-nav">
-          <legend class="add-booking-title">Available Rooms</legend>
-          <div class="available-room-container">
-            
-          </div>
-        </section>
-    `)
-  },
-
   displayUserInfo(user) {
     $('.welcome-user').text(`${user.name}`)
     $('.money-spent').text(`$${user.totalMoneySpent}`)
@@ -28,9 +17,9 @@ const domUserUpdates = {
     return user.myBookings.map(booking => {
       $('.my-bookings').append(`
     <section class="singleBooking">
-    <p class="booking-info">${this.refactorDates(booking)}</p>
-    <p class="booking-info">${booking.roomNumber}</p>
-    <p class="booking-info">${booking.id}</p>
+    <p class="booking-info">DATE: ${this.refactorDates(booking)}</p>
+    <p class="booking-info">Room Number: ${booking.roomNumber}</p>
+    <p class="booking-info">Confirmation #: ${booking.id}</p>
     </section>`)
     })
   },
@@ -49,16 +38,17 @@ const domUserUpdates = {
     }
   },
 
-  displayAvailableRoomsInfo(availableRooms) {
+  displayAvailableRoomsInfo(availableRooms, date) {
     return availableRooms.map(room => {
       $('.pop-up-container').append(`
-        <section class="singleBooking">
+        <section class="singleBooking"> 
         <p class="booking-info">Room Number: ${room.number}</p>
         <p class="booking-info">Room Type: ${room.roomType}</p>
         <p class="booking-info">Has Bidet: ${room.bidet}</p>
         <p class="booking-info">Bed Size: ${room.bedSize}</p>
         <p class="booking-info">Number Of Beds: ${room.numBeds}</p>
-        <p class="booking-info">Cost Per Night: ${room.costPerNight}</p>
+        <p class="booking-info">Cost Per Night: $${room.costPerNight}</p>
+        <button class="book-room-btn" id="${room.number}" data-id="${date}">BOOK NOW</button>
         </section>`)
     })
   },
