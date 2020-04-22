@@ -48,7 +48,7 @@ const domUserUpdates = {
         <p class="booking-info">Bed Size: ${room.bedSize}</p>
         <p class="booking-info">Number Of Beds: ${room.numBeds}</p>
         <p class="booking-info">Cost Per Night: $${room.costPerNight}</p>
-        <button class="book-room-btn" id="${room.number}" data-id="${date}">BOOK NOW</button>
+        <button class="book-room-btn" id="${room.number}" data-id="${date}" aria-label="book-room-btn">BOOK NOW</button>
         </section>`)
     })
   },
