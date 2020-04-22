@@ -1,0 +1,11 @@
+@mixin borders() {
+  border-radius: 10px;
+  border: 4px solid rgb(161, 226, 226);
+  box-shadow: 2px 1px 1px 1px rgb(112, 128, 144);
+}
+
+@mixin displayText() {
+  font-family: fantasy;
+  font-size: 2em;
+  text-align: center;
+}

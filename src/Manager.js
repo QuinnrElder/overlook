@@ -26,11 +26,15 @@ class Manager {
 
   findNumberOfRoomsAvailable() {
     let matchingBookings = this.bookings.allBookings.filter(booking => booking.date === this.date)
-    return (this.rooms.length - matchingBookings.length)
+    let number = (this.rooms.length - matchingBookings.length).toFixed(0)
+    return number
   }
 
   findPercentOfAvailableRooms() {
-    return `${(this.numberOfRoomsAvailable / this.rooms.length) * 100}`
+    let percent = (this.numberOfRoomsAvailable / this.rooms.length) * 100;
+    let num = parseInt(percent)
+    num.toFixed(0)
+    return `${num}`
   }
 
   getTotalRevenue() {
