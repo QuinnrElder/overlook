@@ -25,17 +25,17 @@ const domManagerUpdates = {
           <legend class="add-booking-title">Add a Booking:</legend>
           <div class="add-booking-container">
             <label class="add-booking-label" for="input-userID">Enter Your Id:</label>
-            <input class="input-id" type="test" name="input-userID"></input>
+            <input class="input-id" type="text" name="input-userID" aria-label=""></input>
             <label class="add-booking-label" for="input-date">Enter The Date:</label>
-            <input class="input-date" type="test" name="input-date"></input>
+            <input class="input-date" type="text" name="input-date" aria-label=""></input>
             <label class="add-booking-label" for="input-roomNumber">Enter RoomNumber:</label>
-            <input class="input-roomNumber" type="test" name="input-roomNumber"></input>
+            <input class="input-roomNumber" type="text" name="input-roomNumber" aria-label="search-by-date"></input>
             <input class="add-booking-btn" type="submit">
           </div>
         </section>
         <section class="delete-booking-nav">
           <label class="delete-booking-title">Delete a Booking:</label>
-          <input class="delete-booking-input" type=""></input>
+          <input class="delete-booking-input" type="text" aria-label="search-by-date"></input>
           <input class="delete-booking-btn" type="submit">
         </section>
     `)
