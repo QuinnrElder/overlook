@@ -28,6 +28,8 @@ We aimed to be able to login as the manager. While managing the APP, we wanted t
     - The total amount they’ve spent
     - Add a room booking for that user
     - Delete any upcoming room bookings for that user (they cannot delete a booking from the past)
+    
+![image](/src/images/manager-page.png)
 
 ### As a User: 
 We aimed to be able to login as the user. While using the APP, we wanted the User to be able to see a dashboard page that shows:
@@ -41,6 +43,8 @@ We aimed to be able to login as the user. While using the APP, we wanted the Use
      - I should be able to select a room for booking
      - In the event that no rooms are available for the date/roomType selected, display a message fiercely apologizing to the
      user and asking them to adjust their room search
+     
+![image](/src/images/user-page.png)
 
 ## Details...
 The details of this project are outlined in the project spec.
