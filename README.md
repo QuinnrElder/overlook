@@ -47,4 +47,4 @@ We aimed to be able to login as the user. While using the APP, we wanted the Use
 ![image](/src/images/user-page.png)
 
 ## Details...
-The details of this project are outlined in the project spec.
+The details of this project are outlined in the [Project Spec](https://frontend.turing.io/projects/overlook.html)
