@@ -25,16 +25,20 @@ const loginMethod = {
   checkPasswordNumbers(username) {
     let id1;
     username = username.split('')
-    if (typeof (username.length - 2) === 'number') {
+    let two = username[username.length - 2]
+    let indexMinusTwo = parseInt(two)
+    let one = username[username.length - 1]
+    let indexMinusOne = parseInt(one)
+    if (typeof indexMinusTwo === "number") {
       id1 = username[username.length - 2] + username[username.length - 1]
       id1 = parseInt(id1)
       return id1
-    } else if (typeof (username.length - 1) === 'number') {
+    } else if (typeof indexMinusOne === 'number') {
       id1 = (username[username.length - 1])
       id1 = parseInt(id1)
       return id1
     } else {
-      alert('Please use the correct PASSWORD')
+      return
     }
   },
 
