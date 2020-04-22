@@ -1,18 +1,19 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import 'mixins';
+@import 'variables';
+
 body {
   margin: 0;
   color: white;
 }
 main {
+  align-items: center;
   background-image: url('../images/login-background.jpg');
   background-position: center;
-  margin: 0;
-  height: 100vh;
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
-  align-items: center;
+  height: 100vh;
+  justify-content: space-around;
+  margin: 0;
 }
 
 .hide {
@@ -26,10 +27,8 @@ margin: 0 .5%;
 }
 
 .input {
+  @include borders();
   margin: 0 .5%;
-  border: 3px solid rgb(161, 226, 226);
-  border-radius: 10px;
-  box-shadow: 1px .5px .5px .5px rgb(112, 128, 144);
 }
 
 .login-div {
@@ -38,49 +37,45 @@ width: 17%;
 
 .login-container {
   align-items: center;
-  justify-content: center;
-  height: 35vh;
-  width: 70%;
-  border: 5px solid rgb(161, 226, 226);
-  border-radius: 10px;
-  box-shadow: 2px 1px 1px 1px rgb(68, 78, 82);
   background-color: rgba(44, 107, 107, 0.8);
+  @include borders();
   flex-direction: column;
+  height: 35vh;
+  justify-content: center;
+  width: 70%;
 }
 
 .login-legend {
-  text-align: center;
   margin-top: 1%;
+  text-align: center;
 }
 
 .header-title {
+  font-family: fantasy;
   font-size: 3em;
   margin: 5vh 0 0 0;
-  font-family: fantasy;
   text-align: center;
 }
 
 .login-form {
-  height: 10vh;
-  margin: 0 0 5vh 0;
+  font-family: fantasy;
   font-size: x-large;
   font-weight: 600;
-  font-family: fantasy;
+  height: 10vh;
+  margin: 0 0 5vh 0;
 }
 
 .inputs-login {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 #login-btn {
+  @include borders();
   display: inline-block;
   height: 3em;
   width: 7%;
-  border: 3px solid rgb(161, 226, 226);
-  border-radius: 10px;
-  box-shadow: 1px .5px .5px .5px rgb(112, 128, 144);
 }
 
 
@@ -88,97 +83,78 @@ width: 17%;
 // THIS IS FOR THE MANAGER PAGE //
 
 .main-manager-info {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
 
 }
 
 .manager-page {
+  background-color: rgba(44, 107, 107, 0.8);
+  @include borders();
+  flex-direction: column;
   height: 85vh;
   width: 90%;
-  border: 5px solid rgb(161, 226, 226);
-  border-radius: 10px;
-  background-color: rgba(44, 107, 107, 0.8);
-  flex-direction: column;
-  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
 }
 
 .manager-navs {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  flex-direction: row;
   align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
 .nav-box {
-  border: 3px solid rgb(161, 226, 226);
-  width: 80%;
-  margin: 2% 5% 5% 5%;
+  @include borders();
   height: 20%;
-  border-radius: 10px;
-  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.3);
-  border-radius: 10px;
+  margin: 2% 5% 5% 5%;
+  width: 80%;
 }
 
 .all-available-rooms-txt {
-  font-size: 2em;
-  text-align: center;
-  font-family: fantasy;
+  @include displayText()
 }
 
 .all-available-rooms {
-  font-family: fantasy;
-  text-align: center;
-  font-size: 2em;
+  @include displayText()
 }
 
 .total-revenue-text {
-  text-align: center;
-  font-size: 2em;
-  font-family: fantasy;
+  @include displayText()
 }
 
 .total-revenue {
-  font-family: fantasy;
-  text-align: center;
-  font-size: 2em;
+  @include displayText()
 }
 
 .available-percent-text {
-  font-family: fantasy;
-  text-align: center;
-  font-size: 2em;
+  @include displayText()
 }
 
 .available-percent {
-  font-family: fantasy;
-  text-align: center;
-  font-size: 2em;
+  @include displayText()
 }
 
 .todays-date {
+  font-size: 10em;
   margin: 0;
   text-align: center;
-  font-size: 10em;
   width: 98%;
 }
 
 .manager-search-nav {
-  border: 3px solid rgb(161, 226, 226);
+  align-items: center;
+  @include borders();
+  display: flex;
+  flex-direction: column;
+  font-size: 5em;
+  height: 25vh;
+  justify-content: center;
   margin: 1% 5% 0 5%;
   text-align: center;
-  font-size: 5em;
   width: 98%;
-  height: 25vh;
-  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .search-nav-title {
@@ -186,30 +162,25 @@ width: 17%;
 }
 
 .input-names {
-  border: 3px solid rgb(161, 226, 226);
-  width: 10%;
+  @include borders();
   height: 5vh;
-  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
+  width: 10%;
 }
 
 .input-name {
-  border: 3px solid rgb(161, 226, 226);
-  width: 10%;
+  @include borders();
   height: 5vh;
-  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
+  width: 10%;
 }
 
 #search-user {
-  border: 3px solid rgb(161, 226, 226);
-  width: 10%;
-  height: 5vh;
-  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
-  display: flex;
   align-items: center;
+  @include borders();
+  display: flex;
+  height: 5vh;
   justify-content: center;
+  margin-top: 2%;
+  width: 10%;
 }
 
 
@@ -217,93 +188,79 @@ width: 17%;
 // THIS IS FOR THE USER PAGE //
 .user-page {
   align-items: center;
-  justify-content: center;
-  height: 85vh;
-  width: 90%;
-  border: 5px solid rgb(161, 226, 226);
-  border-radius: 10px;
   background-color: rgba(44, 107, 107, 0.8);
+  @include borders();
   flex-direction: column;
-  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
+  height: 85vh;
+  justify-content: center;
+  width: 90%;
 }
 
 .bookings-container {
+  align-items: center;
   border-right: 5px solid rgb(161, 226, 226);
+  display: flex;
+  flex-direction: column;
   float: left;
   height: 100%;
-  display: flex;
-  width: 25%;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  width: 25%;
 }
 
 .bookings-box {
-  border: 3px solid rgb(161, 226, 226);
-  width: 80%;
-  margin: 5%;
+  @include borders();
   height: 70%;
-  border-radius: 10px;
-  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.3);
-  border-radius: 10px;
+  margin: 5%;
   overflow: scroll;
+  width: 80%;
 }
 
 .pop-up-container {
-  height: 50vh;
-  width: 50%;
-  border: 5px solid rgb(161, 226, 226);
-  border-radius: 10px;
   background-color: rgba(204, 253, 249, .8);
-  flex-direction: column;
-  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
-  position: absolute;
+  @include borders();
   color:black;
+  flex-direction: column;
+  height: 50vh;
   overflow: scroll;
+  position: absolute;
+  width: 50%;
 }
 
 .my-bookings-text {
-  font-size: 2em;
-  text-align: center;
-  font-family: fantasy;
+  @include displayText();
 }
 
 .my-bookings {
-  flex-direction: column;
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: fantasy;
   font-size: 2em;
   text-align: center;
-  font-family: fantasy;
 }
 
 .singleBooking {
-  border: 3px solid rgb(161, 226, 226);
-  border-radius: 10px;
   background-color: rgba(44, 107, 107, 0.8);
-  width: 80%;
+  @include borders();
   margin: 5%;
-  box-shadow: 2px 1px 1px 1px rgba(126, 198, 219, 0.8);
   overflow: scroll;
+  width: 80%;
 }
 
 .booking-info {
+  font-size: .6em;
   margin: 0;
   padding: 2%;
-  font-size: .6em;
 }
 
 .money-spent-text{
-  font-size: 2em;
-  text-align: center;
-  font-family: fantasy;
+  @include displayText();
   margin-bottom: 1%;
+  
 }
 
 .money-spent {
-  font-size: 2em;
-  text-align: center;
-  font-family: fantasy;
+  @include displayText();
   padding-bottom: 2%;
 }
 
@@ -312,64 +269,54 @@ width: 17%;
 }
 
 .welcome-user {
+  font-size: 7em;
   margin: 1% 0 3% 0;
   text-align: center;
-  font-size: 7em;
   width: 98%;
 }
 
 .date-helper {
-  margin: 0;
   font-size: 40%;
+  margin: 0;
 }
 
 .user-search-nav {
-  border: 3px solid rgb(161, 226, 226);
+  @include borders();
+  font-size: 5em;
+  height: 50vh;
   margin-top: 1%;
   text-align: center;
-  font-size: 5em;
   width: 98%;
-  height: 50vh;
-  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
 }
 
 .filter-input {
-  border: 3px solid rgb(161, 226, 226);
-  width: 10%;
+  @include borders();
   height: 5vh;
-  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
+  width: 10%;
 }
 
 .available-room-nav {
+  @include borders();
   display: flex;
   flex-direction: column;
+  font-size: 2em;
+  height: 43vh;
   justify-content: center;
   margin-top: 1%;
   text-align: center;
-  font-size: 2em;
   width: 60%;
-  height: 43vh;
-  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
-  border: 3px solid rgb(161, 226, 226);
 }
 
 #search-btn {
-  border: 3px solid rgb(161, 226, 226);
-  width: 10%;
+  @include borders();
   height: 5vh;
-  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
+  width: 10%;
 }
 
  .book-room-btn {
-  border: 3px solid rgb(161, 226, 226);
-  width: 10%;
+  @include borders();
   height: 5vh;
-  box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
+  width: 10%;
  }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
@@ -378,81 +325,72 @@ width: 17%;
 }
 
 .add-booking-nav {
+  @include borders();
+  font-size: 2em;
+  height: 43vh;
   margin-top: 1%;
   text-align: center;
-  font-size: 2em;
   width: 98%;
-  height: 43vh;
-  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
-  border: 3px solid rgb(161, 226, 226);
 }
 
 
 
 .add-booking-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
    
 .add-booking-title {
 font-size: 2.5em;
 }
+
 .add-booking-label {
 margin: .3%;
 
 }
 .input-id {
-margin: .3%;
-width: 15%;
-border-radius: 10px;
-  border: 3px solid rgb(161, 226, 226);
+  @include borders();
+  margin: .3%;
+  width: 15%;
 }
 
 .input-date {
-margin: .3%;
-width: 15%;
-border-radius: 10px;
-  border: 3px solid rgb(161, 226, 226);
+  @include borders();
+  margin: .3%;
+  width: 15%;
 }
 
 .input-roomNumber {
-margin: .3%;
-width: 15%;
-border-radius: 10px;
-  border: 3px solid rgb(161, 226, 226);
+  @include borders();
+  margin: .3%;
+  width: 15%;
 }
 .add-booking-btn {
-  border: 2px solid rgb(161, 226, 226);
-  width: 20%;
+  @include borders();
   height: 5vh;
-  box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+  width: 20%;
 }
 
 .delete-booking-btn {
-  border: 2px solid rgb(161, 226, 226);
-  width: 20%;
+  @include borders();
   height: 5vh;
-  box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+  width: 20%;
 }
 
 .delete-booking-nav {
-  border: 3px solid rgb(161, 226, 226);
+  @include borders();
+  font-size: 5em;
+  height: 12vh;
   margin-top: 1%;
   text-align: center;
-  font-size: 5em;
   width: 98%;
-  height: 12vh;
-  box-shadow: 3px 2px 2px 2px rgba(75, 77, 78, 0.5);
-  border-radius: 10px;
 }
 
 .delete-booking-input {
-  width: 15%;
+  @include borders();
   height: 30%;
-  border-radius: 10px;
-  border: 3px solid rgb(161, 226, 226);
+  width: 15%;
 }
 
 @media screen and (max-width: 850px) {
@@ -463,23 +401,19 @@ border-radius: 10px;
   }
 
   .login-div {
-    width:100%;
     margin: 5% 0 5% 15%;
+    width:100%;
   }
 
   #login-btn {
-    margin-left: 20%;
     width: 50%;
+    margin-left: 20%;
   }
 
 
   // THIS IS FOR THE MANAGER PAGE //
   .manager-navs {
-    display: flex;
-    width: 100%;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
   }
 
   .nav-box {
@@ -515,71 +449,42 @@ border-radius: 10px;
   }
 
   #search-user {
-    border: 3px solid rgb(161, 226, 226);
     width: 40%;
-    height: 5vh;
-    box-shadow: 2px 1px 1px 1px rgba(75, 77, 78, 0.5);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   
   .manager-search-nav {
-    border: 2px solid rgb(161, 226, 226);
-    text-align: center;
-    
     font-size: 3em;
-    width: 90%;
     height: 40vh;
     margin:2% 5%;
-    box-shadow: 1.5px 1px 1px 1px rgba(75, 77, 78, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 90%;
   }
   
   .input-name {
-    border: 2px solid rgb(161, 226, 226);
-    width: 40%;
-    height: 5vh;
-    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin: 10% 30%;
+    width: 40%;
   }
 
   .input-names {
-    border: 2px solid rgb(161, 226, 226);
-    width: 40%;
-    height: 5vh;
-    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin: 10% 30%;
+    width: 40%;
   }
   
   #search-btn {
-    border: 2px solid rgb(161, 226, 226);
-    width: 43%;
-    height: 5vh;
-    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin-left: 30%;
+    width: 43%;
   }
 
   .search-btn {
     border: 2px solid rgb(161, 226, 226);
-    width: 43%;
-    height: 5vh;
     box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
+    height: 5vh;
     margin-left: 30%;
+    width: 43%;
   }
 
   //  THIS IS FOR THE USER PAGE //
   .bookings-container {
-    float: left;
-    height: 100%;
-    display: flex;
     width: 40%;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
   }
 
   .my-bookings-text {
@@ -603,38 +508,30 @@ border-radius: 10px;
   }
 
   .welcome-user {
-    margin: 10% 0 13% 0;
-    text-align: center;
     font-size: 2em;
-    width: 98%;
+    margin: 10% 0 13% 0;
   }
 
   .user-search-nav {
-    border: 2px solid rgb(161, 226, 226);
-    text-align: center;
-    font-size: 2em;
-    width: 90%;
-    height: 60vh;
-    margin: 2% 0 4% 5%;
-    box-shadow: 1.5px 1px 1px 1px rgba(75, 77, 78, 0.5);
     display: flex;
     flex-direction: column;
+    font-size: 2em;
+    height: 60vh;
     justify-content: center;
+    margin: 2% 0 4% 5%;
+    text-align: center;
+    width: 90%;
   }
 
   .filter-input {
-    border: 2px solid rgb(161, 226, 226);
-    width: 40%;
-    height: 5vh;
-    box-shadow: 1px .5px .5px .5px rgba(75, 77, 78, 0.5);
     margin: 10% 30%;
+    width: 40%;
   }
 
   .pop-up-container{
+    font-size: 2em;
     height: 60vh;
     width: 40%;
-    color: white;
-    font-size: 2em;
   }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
