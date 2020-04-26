@@ -19,6 +19,7 @@ let date = new Date().toLocaleDateString();
 let hotel;
 let usersRepo;
 let user;
+let manager;
 
 // THIS IS FOR THE EVENT ON THE LOGIN SCREEN BUTTON //
 $('#login-btn').on('click', function () {
@@ -66,8 +67,11 @@ function reassignData(apiRooms, apiBookings, newPerson, apiUsers) {
 
 // MANAGER EVENT LISTENERS //
 $('#search-user').on('click', function () {
-  $('.user-pop-up-window').toggleClass('hide')
-  domManagerUpdates.injectManagerSideUserWindowHTML()
+  const searchedUserName = $('.input-names').val()
+  domManagerUpdates.flipCard($('.user-page'), $('.manager-page'));
+  let user = manager.findSearchedUser(searchedUserName)
+  console.log(user)
+  domUserUpdates.displayUserPage(user)
 })
 
 // USER EVENT LISTENERS //
@@ -124,7 +128,7 @@ function reAssignUsers(apiUsers) {
 
 function reAssignUser(newPerson) {
   if (newPerson === 'manager') {
-    let manager = new Manager(newPerson, usersRepo, hotel, date)
+    manager = new Manager(newPerson, usersRepo, hotel, date)
     return manager
   } else {
     user = new User(newPerson, hotel, date)

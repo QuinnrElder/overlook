@@ -49,5 +49,10 @@ class Manager {
     }, 0)
     return profits
   }
+
+  findSearchedUser(findUser) {
+    console.log(this.users)
+    return this.users.allUsers.find( user => user.name === findUser)
+  }
 }
 export default Manager;

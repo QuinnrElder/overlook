@@ -183,8 +183,6 @@ width: 17%;
   width: 10%;
 }
 
-
-
 // THIS IS FOR THE USER PAGE //
 .user-page {
   align-items: center;
@@ -216,13 +214,14 @@ width: 17%;
 }
 
 .pop-up-container {
-  background-color: rgba(204, 253, 249, .8);
+  background-color: white;
   @include borders();
   color:black;
   flex-direction: column;
-  height: 50vh;
+  height: 80vh;
   overflow: scroll;
   position: absolute;
+  top: 10%;
   width: 50%;
 }
 
@@ -242,7 +241,7 @@ width: 17%;
 .singleBooking {
   background-color: rgba(44, 107, 107, 0.8);
   @include borders();
-  margin: 5%;
+  margin: 5% 9%;
   overflow: scroll;
   width: 80%;
 }
@@ -316,7 +315,8 @@ width: 17%;
  .book-room-btn {
   @include borders();
   height: 5vh;
-  width: 10%;
+  width: 30%;
+  margin-bottom: 1%;
  }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
@@ -333,7 +333,17 @@ width: 17%;
   width: 98%;
 }
 
-
+.user-pop-up-window {
+  background-color: white;
+  @include borders();
+  color:black;
+  flex-direction: column;
+  height: 80vh;
+  overflow: scroll;
+  position: absolute;
+  top: 10%;
+  width: 50%;
+}
 
 .add-booking-container {
   align-items: center;
@@ -523,6 +533,15 @@ margin: .3%;
     width: 90%;
   }
 
+  .book-room-btn {
+    width: 80%;
+    margin-bottom: 4%;
+   }
+
+   .booking-info {
+    font-size: .3em;
+  }
+
   .filter-input {
     margin: 10% 30%;
     width: 40%;
@@ -531,7 +550,7 @@ margin: .3%;
   .pop-up-container{
     font-size: 2em;
     height: 60vh;
-    width: 40%;
+    width: 45%;
   }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
