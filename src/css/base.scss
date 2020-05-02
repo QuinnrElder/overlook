@@ -94,7 +94,7 @@ width: 17%;
   background-color: rgba(44, 107, 107, 0.8);
   @include borders();
   flex-direction: column;
-  height: 85vh;
+  height: 95vh;
   width: 90%;
 }
 
@@ -179,11 +179,9 @@ width: 17%;
   display: flex;
   height: 5vh;
   justify-content: center;
-  margin-top: 2%;
+  margin: 1%;
   width: 10%;
 }
-
-
 
 // THIS IS FOR THE USER PAGE //
 .user-page {
@@ -191,7 +189,7 @@ width: 17%;
   background-color: rgba(44, 107, 107, 0.8);
   @include borders();
   flex-direction: column;
-  height: 85vh;
+  height: 90vh;
   justify-content: center;
   width: 90%;
 }
@@ -216,14 +214,20 @@ width: 17%;
 }
 
 .pop-up-container {
-  background-color: rgba(204, 253, 249, .8);
+  background-color: white;
   @include borders();
   color:black;
   flex-direction: column;
-  height: 50vh;
+  height: 80vh;
   overflow: scroll;
   position: absolute;
+  top: 10%;
   width: 50%;
+}
+
+.close-user-window {
+width: 100px;
+float: right;
 }
 
 .my-bookings-text {
@@ -242,7 +246,7 @@ width: 17%;
 .singleBooking {
   background-color: rgba(44, 107, 107, 0.8);
   @include borders();
-  margin: 5%;
+  margin: 5% 9%;
   overflow: scroll;
   width: 80%;
 }
@@ -272,7 +276,7 @@ width: 17%;
   font-size: 7em;
   margin: 1% 0 3% 0;
   text-align: center;
-  width: 98%;
+  display: inline;
 }
 
 .date-helper {
@@ -316,7 +320,8 @@ width: 17%;
  .book-room-btn {
   @include borders();
   height: 5vh;
-  width: 10%;
+  width: 30%;
+  margin-bottom: 1%;
  }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
@@ -333,7 +338,17 @@ width: 17%;
   width: 98%;
 }
 
-
+.user-pop-up-window {
+  background-color: white;
+  @include borders();
+  color:black;
+  flex-direction: column;
+  height: 80vh;
+  overflow: scroll;
+  position: absolute;
+  top: 10%;
+  width: 50%;
+}
 
 .add-booking-container {
   align-items: center;
@@ -482,6 +497,10 @@ margin: .3%;
     width: 43%;
   }
 
+  .close-user-window {
+    width: 70px;
+  }
+
   //  THIS IS FOR THE USER PAGE //
   .bookings-container {
     width: 40%;
@@ -523,6 +542,15 @@ margin: .3%;
     width: 90%;
   }
 
+  .book-room-btn {
+    width: 80%;
+    margin-bottom: 4%;
+   }
+
+   .booking-info {
+    font-size: .3em;
+  }
+
   .filter-input {
     margin: 10% 30%;
     width: 40%;
@@ -531,7 +559,7 @@ margin: .3%;
   .pop-up-container{
     font-size: 2em;
     height: 60vh;
-    width: 40%;
+    width: 45%;
   }
 
 // THIS IS FOR THE MANAGER SIDE USER INFO //
