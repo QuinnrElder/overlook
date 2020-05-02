@@ -13,6 +13,7 @@ import User from './User';
 import UsersRepo from './UsersRepo';
 
 import './images/login-background.jpg'
+import './images/close-sharp.svg'
 
 let bookings;
 let date = new Date().toLocaleDateString();
@@ -72,6 +73,12 @@ $('#search-user').on('click', function () {
   let user = manager.findSearchedUser(searchedUserName)
   console.log(user)
   domUserUpdates.displayUserPage(user)
+  $('.close-user-window').toggleClass('hide')
+})
+
+$('.close-user-window').on('click', function() {
+  $('.close-user-window').toggleClass('hide')
+  domManagerUpdates.flipCard($('.manager-page'), $('.user-page'))
 })
 
 // USER EVENT LISTENERS //
